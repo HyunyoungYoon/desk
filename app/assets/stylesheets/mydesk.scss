@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
 .myagendabackgroundimg{
   position: relative;
   background: url('/img/mydesk/agenda/worldmap.jpg') center center;
@@ -207,19 +208,18 @@
 }
 
 // pushpin에 쓰이는 것
-
 // Class for when element is above threshold
- #recommend.pin-top {
+ .pin-top {
    position: relative;
  }
 
  // Class for when element is below threshold
- #recommend.pin-bottom {
+ .pin-bottom {
    position: relative;
  }
 
  // Class for when element is pinned
- #recommend.pinned {
+ .pinned {
     position: fixed !important;
  }
 

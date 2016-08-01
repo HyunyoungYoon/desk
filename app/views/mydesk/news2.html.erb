@@ -96,10 +96,9 @@
 
 
 <script>
-  $('#recommend').pushpin({ top:110, bottom:500 });
-
   $(document).ready(function() {
     // 기존 어젠다, 신규 어젠다 선택 모달 띄우기
     $('.modal-trigger').leanModal();
+    $('.recommend').pushpin({ top: $('.recommend').offset().top });
   });
 </script>
