@@ -1,0 +1,78 @@
+<div class="myagendabackgroundimg">
+  <div class="row">
+    <h5 style="margin-top: .1em; background:white; padding:.5em;"><a class="btn-floating waves-effect waves-light black" href="#"><i class="material-icons">swap_calls</i></a>&nbsp;&nbsp;<b>Agenda 순으로 정리된 기사들</b></h5>
+  </div>
+  <div class="row">
+    <div class="col s12 myagenda">
+      <div class="agenda">
+        <a class="waves-effect waves-light btn modal-trigger" id="agenda1" href="#modal" style="height:40px; margin-left:<%= Random.rand(80) %>%; margin-top:<%= Random.rand(70) %>;"><b>전기자동차</b></a>
+      </div><br>
+      <div class="agenda">
+        <a class="waves-effect waves-light btn modal-trigger" id="agenda2" href="#modal2" style="height:40px; margin-left:<%= Random.rand(80) %>%; margin-top:<%= Random.rand(70) %>; background-color:yellow; color:black;"><b>바나나나나~</b></a>
+      </div><br>
+      <div class="agenda">
+        <a class="waves-effect waves-light btn modal-trigger" id="agenda3" href="#modal3" style="height:40px; margin-left:<%= Random.rand(80) %>%; margin-top:<%= Random.rand(70) %>; background-color:red;"><b>포켓몬고!</b></a>
+      </div><br>
+      <div class="agenda">
+        <a class="waves-effect waves-light btn modal-trigger" id="agenda4" href="#modal4" style="height:40px; margin-left:<%= Random.rand(80) %>%; margin-top:<%= Random.rand(70) %>; background-color:green;"><b>Olympic~!</b></a>
+      </div><br>
+      <div class="agenda">
+        <a class="waves-effect waves-light btn modal-trigger" id="agenda5" href="#modal5" style="height:40px; margin-left:<%= Random.rand(80) %>%; margin-top:<%= Random.rand(70) %>; background-color:grey;"><b>Thaad</b></a>
+      </div><br>
+      <div class="agenda">
+        <a class="waves-effect waves-light btn modal-trigger" id="agenda6" href="#modal6" style="height:40px; margin-left:<%= Random.rand(80) %>%; margin-top:<%= Random.rand(70) %>; background-color:blue;"><b>미국 대선</b></a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Structure -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <h4 style="text-align:center;">Agenda : 전기자동차</h4><hr>
+      <h6><a href="/mydesk/news2"><b>테슬라, 그 이후는?</b></a></h6>
+    </div>
+  </div>
+
+<!-- 예시를 위해 6개의 modal을 일일이 연결시킨 것 -->
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <h4 style="text-align:center;">Agenda : 바나나나나~</h4><hr>
+      <h6><a href="http://www.sedaily.com/Photo/NewsView/1KYYATYBWC"><b>서울대 공대 신양에서 미니언..</b></a></h6>
+    </div>
+  </div>
+
+  <div id="modal3" class="modal">
+    <div class="modal-content">
+      <h4 style="text-align:center;">Agenda : 포켓몬고!</h4><hr>
+      <h6><a href="http://www.visualdive.com/2016/07/%ED%98%84%EC%8B%A4%EC%97%90%EC%84%9C-%EB%A7%8C%EB%82%98%EB%8A%94-%ED%94%BC%EC%B9%B4%EC%B8%84-%ED%8F%AC%EC%BC%93%EB%AA%AC%EA%B3%A0-%E7%BE%8E%EC%84%9C-%ED%8F%AD%EB%B0%9C/"><b>피카츄라이츄, 포켓몬고..</b></a></h6>
+    </div>
+  </div>
+
+  <div id="modal4" class="modal">
+    <div class="modal-content">
+      <h4 style="text-align:center;">Agenda : Olympic~!</h4><hr>
+      <h6><a href="/mydesk/news1"><b>리우에서 올림픽이..</b></a></h6>
+    </div>
+  </div>
+
+  <div id="modal5" class="modal">
+    <div class="modal-content">
+      <h4 style="text-align:center;">Agenda : Thaad</h4><hr>
+      <h6><a href="http://www.visualdive.com/2016/07/%ED%98%84%EC%8B%A4%EC%97%90%EC%84%9C-%EB%A7%8C%EB%82%98%EB%8A%94-%ED%94%BC%EC%B9%B4%EC%B8%84-%ED%8F%AC%EC%BC%93%EB%AA%AC%EA%B3%A0-%E7%BE%8E%EC%84%9C-%ED%8F%AD%EB%B0%9C/"><b>사드배치에 따른..</b></a></h6>
+    </div>
+  </div>
+
+  <div id="modal6" class="modal">
+    <div class="modal-content">
+      <h4 style="text-align:center;">Agenda : 전기자동차</h4><hr>
+      <h6><a href="http://www.irobotnews.com/news/articleView.html?idxno=8213"><b>과연 그 승자는?</b></a></h6>
+    </div>
+  </div>
+
+<!-- 모달 불러오는 jquery script -->
+<script>
+  $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+  });
+</script>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Deskfront</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+  <div id="background"></div>
+    <nav name="header">
+      <div class="nav-wrapper grey lighten-5">
+        <a href="/home/index" class="brand-logo black-text" style="margin-left:120px;"><b>DESK</b></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down" style="margin-right:200px;">
+          <li class="active"><a href="/home/index" class="black-text"><b>Home</b></a></li>
+          <!-- Dropdown Trigger -->
+          <li><a class="dropdown-button black-text" href="/mydesk/index" data-activates="dropdown1"><b>My DESK</b><i class="material-icons right">arrow_drop_down</i></a></li>
+          <li><a href="/discover/index" class="black-text"><b>Discover</b></a></li>
+          <li><input name="search" placeholder="기사 검색하기!"><i class="material-search"></i></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Navbar Dropdown Structure -->
+    <ul id="dropdown1" class="dropdown-content">
+      <li><a href="/mydesk/index" class="black-text">최신 순서</a></li>
+      <li><a href="/mydesk/agenda" class="black-text">Agenda순서</a></li>
+      <li><a href="/mydesk/index" class="black-text">하나 더?</a></li>
+    </ul>
+
+  <%= yield %>
+
+  <script>
+    $(".dropdown-button").dropdown();
+
+    // 기존 어젠다, 신규 어젠다 선택 모달 띄우기
+    $(document).ready(function() {
+      $('.modal-trigger').leanModal();
+    });
+  </script>
+
+</body>
+</html>
