@@ -1,0 +1,13 @@
+<% @agendas.each do |a| %>
+  <%= a.name %>
+  <br>
+  <%= a.posts.each do |p| %>
+  <%= p.url %>
+  <br>
+    <%= p.comments.each do |d| %>
+    <%= d.content %>
+    <% end %>
+  <br>
+  <% end %>
+<% end %>
+
