@@ -110,25 +110,37 @@
 
 // news1.html.erb에서 포스트잇 효과
 .postit{
-  -webkit-transform:rotate(1deg);
-  -o-transform:rotate(1deg);
-  -moz-transform:rotate(1deg);
+  -webkit-transform:rotate(.5deg);
+  -o-transform:rotate(.5deg);
+  -moz-transform:rotate(.5deg);
+  -moz-box-shadow: 10px 10px 5px #888888;
+  -webkit-box-shadow: 10px 10px 5px #888888;
+  box-shadow: 10px 10px 5px #888888;
   padding:50px;
+  background-color: white;
 }
 
 .mypostit{
   padding:50px;
-  -webkit-transform:rotate(-1deg);
-  -o-transform:rotate(-1deg);
-  -moz-transform:rotate(-1deg);
+  -webkit-transform:rotate(-.5deg);
+  -o-transform:rotate(-.5deg);
+  -moz-transform:rotate(-.5deg);
+  -moz-box-shadow: 10px 10px 5px #888888;
+  -webkit-box-shadow: 10px 10px 5px #888888;
+  box-shadow: 10px 10px 5px #888888;
+  background-color: white;
 }
 
 .commentpostit{
   background:#fff176;
   padding:20px;
-  -webkit-transform:rotate(.5deg);
-  -o-transform:rotate(.5deg);
-  -moz-transform:rotate(.5deg);
+  -webkit-transform:rotate(.3deg);
+  -o-transform:rotate(.3deg);
+  -moz-transform:rotate(.3deg);
+  -moz-box-shadow: 10px 10px 5px #888888;
+  -webkit-box-shadow: 10px 10px 5px #888888;
+  box-shadow: 10px 10px 5px #888888;
+  background-color: white;
 }
 
 
@@ -272,4 +284,30 @@
   -webkit-transform-origin: 50% 100%;
   -ms-transform-origin: 50% 100%;
   -o-transform-origin: 50% 100%;
+}
+
+//클립효과 나타내기
+span.paper-clip:after {
+    width: 11px;
+    height: 30px;
+    right: 6px;
+    top: 5px;
+    content: " ";
+    display: block;
+    position: absolute;
+    border-radius: 10px;
+    border: 3px solid #81d4fa;
+    border-bottom: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+span.paper-clip {
+    height: 60px;
+    width: 20px;
+    margin-left: -2em;
+    margin-top: -4em;
+    border-radius: 10px;
+    border: 3px solid #81d4fa;
+    display: inline-block;
+    position: absolute;
 }

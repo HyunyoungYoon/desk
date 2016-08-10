@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'mydesk/index'
 
   get 'home/index'
+  get 'home/loginpage'
+  get 'home/registrationpage'
+
   get 'mydesk/index'
   get 'mydesk/agenda'
   get 'mydesk/agenda1'
