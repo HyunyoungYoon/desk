@@ -2,12 +2,24 @@
     <%= f.label :url %>
     <%= f.text_field :url %>
     <br>
+    
+    <!--whether make new or choose one -->
+    <%#= f.check_box :field, {:class => "myclass", :style => "mystyle"}, "checked-value", "unchecked-value" %>
+    
+    <!--making a new agenda--!>
     <%= f.fields_for :agenda, Agenda.new do |a| %>
     <p>
-      <%= a.label :name, "Agenda" %><br />
+      <%= a.label :name, "New Agenda" %><br />
       <%= a.text_field :name %><br />
     </p>
     <% end %>
+    
+    <!--selecting one of existing agendas-->
+    <p>
+      <%= f.label :agenda_id, "Existing Agenda" %>
+      <%= f.text_field :agenda_id %>
+    </p>
+    
     <br>
     <%= f.fields_for :comments, Comment.new do |c| %>
     <p>

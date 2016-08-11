@@ -5,3 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Agenda.create(name: 'thaad')
+Post.create(url: 'https://namu.wiki/w/THAAD', agenda_id: 1)
+Comment.create(content: 'this is what namu wiki says about thaad', post_id:1)
+Post.create(url: 'http://kr.brainworld.com/Opinion/14573', agenda_id: 1)
+Comment.create(content: 'introduction of a novel thaad', post_id: 2)
+
+Agenda.create(name: 'sharehouse boom')
+Post.create(url: 'http://www.cnews.co.kr/uhtml/read.jsp?idxno=201607061524574950273', agenda_id: 2)
+Comment.create(content: 'sharehouse supplying policy of the opposite party', post_id:3)
+

@@ -1,25 +1,42 @@
 class PostsController < ApplicationController
   def index
     @posts = Post.all
-    @agendas = Agenda.all
   end
+  def show
+    @post = Post.find(params[:id])
+  end  
   
   def new
     @post = Post.new
-  end
-  
+  end  
   def create
-    @post = Post.new(post_params)
+    # if make a new agenda
+    @post = Post.new(post_new_params)
+    # else choose one of existing agendas
+    # @post = Post.new(post_existing_params)
     @post.save
     redirect_to posts_path
   end
   
-  private
-  def post_params
-    params.require(:post).permit(:url, comments_attributes: [:id, :content, :_destroy],
-                                  agenda_attributes: [ :id, :name])
+  # post를 수정하는 경우는 없다
+  # 수정한다면 comment를 수정하겠지
+  # 만약 다른 agenda랑 연결하고자 한다면?
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to posts_path
   end
-  # def comment_params
-  #   params.require(:comment).permit(:content)
-  # end
+  
+  private
+  # params to make a new agenda
+  def post_new_params
+    params.require(:post).permit(:url, comments_attributes: [:id, :content, :_destroy],
+                                  agenda_attributes: [ :id, :name, :color])
+  end
+  # params to select one of existing agendas
+  def post_existing_params
+    params.require(:post).permit(:url, :agenda_id, comments_attributes: [:id, :content, :_destroy])
+  end
+
 end

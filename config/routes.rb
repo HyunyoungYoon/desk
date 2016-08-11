@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   root 'posts#new'
   resources :agendas
-  resources :posts
+  resources :posts, except: [:edit, :update]
   resources :comments
   
   # The priority is based upon order of creation: first created -> highest priority.
