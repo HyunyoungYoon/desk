@@ -16,3 +16,5 @@ Agenda.create(name: 'sharehouse boom')
 Post.create(url: 'http://www.cnews.co.kr/uhtml/read.jsp?idxno=201607061524574950273', agenda_id: 2)
 Comment.create(content: 'sharehouse supplying policy of the opposite party', post_id:3)
 
+User.create(email: "user1@snu.ac.kr", password:"12341234", password_confirmation:"12341234")
+User.create(email: "user2@snu.ac.kr", password:"12341234", password_confirmation:"12341234")
