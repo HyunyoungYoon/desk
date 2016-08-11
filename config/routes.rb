@@ -1,6 +1,19 @@
 Rails.application.routes.draw do
-  
-  root 'posts#new'
+  devise_for :users
+  get 'mydesk/index'
+
+  get 'home/index'
+  get 'home/loginpage'
+  get 'home/registrationpage'
+
+  get 'mydesk/index'
+  get 'mydesk/agenda'
+  get 'mydesk/agenda1'
+  get 'mydesk/news1'
+  get 'mydesk/news2'
+  get 'discover/index'
+  root 'home#index'
+
   resources :agendas
   resources :posts, except: [:edit, :update]
   resources :comments

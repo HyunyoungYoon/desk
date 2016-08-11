@@ -1,0 +1,102 @@
+<div class="row">
+  <div class="col s12 m9 l8 offset-l1">
+    <div class="row postit">
+      <div class="col s5">
+        <span class="paper-clip"></span>
+        <!-- 포스트를 수정하는 부분 -->
+        <div class="fixed-action-btn horizontal" style="top:1em;">
+          <a class="btn-floating">
+            <i class="large material-icons yellow darken-1">mode_edit</i>
+          </a>
+          <ul>
+            <li><a class="btn-floating yellow darken-1" href="#"><i class="material-icons">mode_edit</i></a></li>
+            <li><a class="btn-floating red" href="#"><i class="material-icons">delete</i></a></li>
+          </ul>
+        </div>
+        <!-- 포스트를 수정하는 부분 -->
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src="/img/mydesk/post/example2.jpeg" height="320em" width="240em">
+        </div>
+      </div>
+      <div class="col s7">
+        <h4 style="text-align:center;">엘론머스크다!
+          <p><a href="http://www.irobotnews.com/news/articleView.html?idxno=8213">테슬라, 그 이후는?.</a></p>
+        </h4>
+      </div>
+    </div><br>
+    <div class="row mypostit">
+      <div class="col s12">
+        <span class="paper-clip"></span>
+        <!-- Comment를 수정하는 부분 -->
+        <div class="fixed-action-btn horizontal" style="top:1em;">
+          <a class="btn-floating">
+            <i class="large material-icons yellow darken-1">mode_edit</i>
+          </a>
+          <ul>
+            <li><a class="btn-floating yellow darken-1" href="#"><i class="material-icons">mode_edit</i></a></li>
+            <li><a class="btn-floating red" href="#"><i class="material-icons">delete</i></a></li>
+          </ul>
+        </div>
+        <!-- Comment를 수정하는 부분 -->
+        <h3 style="margin-left:2px; margin-top:2px;"><b>My Idea!</b></h3>
+        <div class="text" style="font-size: 25px;">
+          음.. 테슬라와 솔라시티, 스페이스X에 이어 다음으로 엘론머스크가 진출할 사업은 아마 로봇이 아닐까싶다.
+        </div>
+        <div class="time">5 days ago</div>
+      </div>
+    </div><br><hr><br>
+
+    <!-- Comment에 해당하는 부분이 달리는 곳 : mydesk.scss에 해당하는 css값들을 넣어둠-->
+    <div class="row commentpostit">
+      <div class="chat-body">
+        <i class="pin"></i>
+        <div class="answer left">
+          <div class="avatar">
+            <img src="/img/user2.gif" alt="User name" style="width:3em; height:4em;">
+            <div class="status offline"></div>
+          </div>
+          <div class="text">
+            Lorem ipsum dolor amet, consectetur adipisicing elit Lorem ipsum dolor amet, consectetur adipisicing elit Lorem ipsum dolor amet, consectetur adiping elit
+          </div>
+          <div class="time">7 min ago</div>
+        </div>
+      </div><br>
+      <div class="chat-body">
+        <div class="answer left">
+          <div class="avatar">
+            <img src="/img/user3.png" alt="User name" style="width:3em; height:4em;">
+            <div class="status offline"></div>
+          </div>
+          <div class="text">
+            wowwowwow 와우와우와우 wowwowwow 오오오오오오 ohohohoh 신기신기하다!
+          </div>
+          <div class="time">5 hours ago</div>
+        </div>
+      </div><br>
+      <div class="chat-body">
+        <div class="answer left">
+          <div class="avatar">
+            <img src="/img/user4.jpg" alt="User name" style="width:3em; height:4em;">
+            <div class="status offline"></div>
+          </div>
+          <div class="text">
+            그 글귀가 내 마음속으로 들어왔다.
+          </div>
+          <div class="time">5 days ago</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col hide-on-small-only m3 l2">
+    <%= render partial: "recommend" %>
+  </div>
+</div>
+
+
+<script>
+  $(document).ready(function() {
+    // 기존 어젠다, 신규 어젠다 선택 모달 띄우기
+    $('.modal-trigger').leanModal();
+    $('.recommend').pushpin({ top: $('.recommend').offset().top });
+  });
+</script>
