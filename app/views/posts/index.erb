@@ -1,13 +1,13 @@
-<% @agendas.each do |a| %>
-  <%= a.name %>
-  <br>
-  <%= a.posts.each do |p| %>
-  <%= p.url %>
-  <br>
-    <%= p.comments.each do |d| %>
-    <%= d.content %>
-    <% end %>
-  <br>
+<p> 최신순 </p>
+
+<%= @posts.each do |p| %>
+  <p>
+  <%= p.url %></br>
+  <%= p.agenda.name %></br>
+  <%= p.comments.each do |d| %>
+    <%= d.content %></br>
   <% end %>
+  </p>
 <% end %>
+
 

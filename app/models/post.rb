@@ -9,4 +9,5 @@ class Post < ActiveRecord::Base
     def reject_comments(attributes)
         attributes['content'].blank?
     end
+   
 end
