@@ -1,6 +1,6 @@
 <%= form_for @post do |f| %>
     <%= f.label :url %>
-    <%= f.text_field :url %>
+    <%= f.text_field :url, class: "input-field" %>
     <br>
     
     <!--whether make new or choose one -->
@@ -28,5 +28,5 @@
     </p>
     <% end %>
     <br>
-    <%= f.submit "Create" %>
+    <%= f.submit "Create", class: "btn" %>
 <% end %>
