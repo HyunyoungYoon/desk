@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+<<<<<<< HEAD
 
  #background {
      position: fixed;
@@ -35,3 +36,5 @@
    padding: 1em;
    margin-top: 20px;
  }
+=======
+>>>>>>> 0116ede3f7d184ab47df0a3ce3a0b5e0a9ea79c6

@@ -1,0 +1,20 @@
+<%= form_for @post do |f| %>
+    <%= f.label :url %>
+    <%= f.text_field :url %>
+    <br>
+    <%= f.fields_for :agenda, Agenda.new do |a| %>
+    <p>
+      <%= a.label :name, "Agenda" %><br />
+      <%= a.text_field :name %><br />
+    </p>
+    <% end %>
+    <br>
+    <%= f.fields_for :comments, Comment.new do |c| %>
+    <p>
+      <%= c.label :content, "Comment" %><br />
+      <%= c.text_area :content, :rows => 3 %><br />
+    </p>
+    <% end %>
+    <br>
+    <%= f.submit "Create" %>
+<% end %>

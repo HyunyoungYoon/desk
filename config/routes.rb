@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
   devise_for :users
   get 'mydesk/index'
 
@@ -14,6 +15,14 @@ Rails.application.routes.draw do
   get 'discover/index'
   root 'home#index'
 
+=======
+  
+  root 'posts#new'
+  resources :agendas
+  resources :posts
+  resources :comments
+  
+>>>>>>> 0116ede3f7d184ab47df0a3ce3a0b5e0a9ea79c6
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
