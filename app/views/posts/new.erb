@@ -1,6 +1,6 @@
 <%= form_for @post do |f| %>
     <%= f.label :url %>
-    <%= f.text_field :url %>
+    <%= f.text_field :url, class: "input-field" %>
     <br>
     <%= f.fields_for :agenda, Agenda.new do |a| %>
     <p>
@@ -16,5 +16,5 @@
     </p>
     <% end %>
     <br>
-    <%= f.submit "Create" %>
+    <%= f.submit "Create", class: "btn" %>
 <% end %>
