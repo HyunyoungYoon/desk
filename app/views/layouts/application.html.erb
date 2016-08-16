@@ -1,57 +1,57 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Desk</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
-  <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
-<body id="background">
-  <nav name="header">
-    <div class="nav-wrapper grey lighten-5">
-      <a href="/home/index" class="brand-logo black-text" style="margin-left:120px;"><b>DESK</b></a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down" style="margin-right:200px;">
-        <li class="<% if params[:controller] == 'home' %>active<% end %>"><a href="/home/index" class="black-text"><b>Home</b></a></li>
-        <% if user_signed_in? %>
-          <!-- Dropdown Trigger -->
-        <li class="<% if params[:controller] == 'mydesk' %>active<% end %>"><a class="dropdown-button black-text" href="/mydesk/index" data-activates="dropdown1"><b>My DESK</b><i class="material-icons right">arrow_drop_down</i></a></li>
-        <% end %>
-        <li class="<% if params[:controller] == 'discover' %>active<% end %>"><a href="/discover/index" class="black-text"><b>Discover</b></a></li>
-        <li><input name="search" placeholder="기사 검색하기!"><i class="material-search"></i></li>
-        <% if user_signed_in? %>
-        <li><%= link_to '로그아웃', destroy_user_session_path, method: 'DELETE', class:"black-text", style: "font-weight:bold;" %></li>
-        <li><%= link_to '회원정보 수정', edit_user_registration_path, class: "black-text", style: "font-weight:bold;" %></li>
-        <% else %>
-        <li><%= link_to '회원가입', new_user_registration_path, class: "black-text", style: "float:right; font-weight:bold;" %></li>
-        <li><%= link_to '로그인하기', new_user_session_path, class: "black-text", style: "float:right; font-weight:bold;" %></li>
-        <% end %>
+  <head>
+    <title>Desk</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+  <body id="background">
+    <nav name="header">
+      <div class="nav-wrapper grey lighten-5">
+        <a href="/home/index" class="brand-logo black-text" style="margin-left:120px;"><b>DESK</b></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down" style="margin-right:200px;">
+          <li class="<% if params[:controller] == 'home' %>active<% end %>"><a href="/home/index" class="black-text"><b>Home</b></a></li>
+          <% if user_signed_in? %>
+            <!-- Dropdown Trigger -->
+          <li class="<% if params[:controller] == 'mydesk' %>active<% end %>"><a class="dropdown-button black-text" href="/mydesk/index" data-activates="dropdown1"><b>My DESK</b><i class="material-icons right">arrow_drop_down</i></a></li>
+          <% end %>
+          <li class="<% if params[:controller] == 'discover' %>active<% end %>"><a href="/discover/index" class="black-text"><b>Discover</b></a></li>
+          <li><input name="search" placeholder="기사 검색하기!"><i class="material-search"></i></li>
+          <% if user_signed_in? %>
+          <li><%= link_to '로그아웃', destroy_user_session_path, method: 'DELETE', class:"black-text", style: "font-weight:bold;" %></li>
+          <li><%= link_to '회원정보 수정', edit_user_registration_path, class: "black-text", style: "font-weight:bold;" %></li>
+          <% else %>
+          <li><%= link_to '회원가입', new_user_registration_path, class: "black-text", style: "float:right; font-weight:bold;" %></li>
+          <li><%= link_to '로그인하기', new_user_session_path, class: "black-text", style: "float:right; font-weight:bold;" %></li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+
+      <!-- Navbar Dropdown Structure -->
+      <ul id="dropdown1" class="dropdown-content">
+        <li><a href="/mydesk/index" class="black-text">최신 순서</a></li>
+        <li><a href="/mydesk/agenda" class="black-text">Agenda순서</a></li>
+        <li><a href="/mydesk/index" class="black-text">하나 더?</a></li>
       </ul>
-    </div>
-  </nav>
 
-    <!-- Navbar Dropdown Structure -->
-    <ul id="dropdown1" class="dropdown-content">
-      <li><a href="/mydesk/index" class="black-text">최신 순서</a></li>
-      <li><a href="/mydesk/agenda" class="black-text">Agenda순서</a></li>
-      <li><a href="/mydesk/index" class="black-text">하나 더?</a></li>
-    </ul>
+    <%= yield %>
 
-  <%= yield %>
+    <script>
+      $(".dropdown-button").dropdown();
 
-  <script>
-    $(".dropdown-button").dropdown();
+      // 기존 어젠다, 신규 어젠다 선택 모달 띄우기
+      $(document).ready(function() {
+        $('.modal-trigger').leanModal();
+      });
+    </script>
 
-    // 기존 어젠다, 신규 어젠다 선택 모달 띄우기
-    $(document).ready(function() {
-      $('.modal-trigger').leanModal();
-    });
-  </script>
-
-</body>
+  </body>
 </html>
