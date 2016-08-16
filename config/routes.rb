@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'mydesk/news1'
   get 'mydesk/news2'
   get 'discover/index'
+  
   root 'home#index'
 
   resources :agendas

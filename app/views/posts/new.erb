@@ -6,7 +6,7 @@
     <!--whether make new or choose one -->
     <%#= f.check_box :field, {:class => "myclass", :style => "mystyle"}, "checked-value", "unchecked-value" %>
     
-    <!--making a new agenda--!>
+    <!--새로운 agenda를 만들 때--!>
     <%= f.fields_for :agenda, Agenda.new do |a| %>
     <p>
       <%= a.label :name, "New Agenda" %><br />
@@ -14,7 +14,7 @@
     </p>
     <% end %>
     
-    <!--selecting one of existing agendas-->
+    <!--기존 agenda 중 선택할 때-->
     <p>
       <%= f.label :agenda_id, "Existing Agenda" %>
       <%= f.text_field :agenda_id %>

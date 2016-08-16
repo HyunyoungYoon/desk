@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20160810055135) do
   create_table "agendas", force: :cascade do |t|
     t.string   "name"
     t.string   "color"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -36,6 +37,7 @@ ActiveRecord::Schema.define(version: 20160810055135) do
     t.text     "abstract"
     t.boolean  "view"
     t.integer  "agenda_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

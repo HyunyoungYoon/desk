@@ -7,6 +7,7 @@ class CreatePosts < ActiveRecord::Migration
       t.text :abstract
       t.boolean :view   #whether or not you've ever clicked the corresponding link
       t.integer :agenda_id
+      t.integer :user_id # ??????????
       
       t.timestamps null: false
     end
