@@ -11,6 +11,10 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
+//= require materialize
 //= require_tree .
+//= require turbolinks
+//
+$.turbo.use('turbolinks:load');
