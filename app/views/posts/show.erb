@@ -1,20 +1,23 @@
 <!--post의 내용-->
 <%= @post.url %>
 <%= @post.title %>
-<%= @post.agenda.name %>
+<%#= @post.agenda.name %>
 <%#= @post.pic %>
-<%= @post.abstract %>
+<%#= @post.abstract %>
 
 <!--자신이 쓴 코멘트-->
-<%= @post.my_comment.content %></br>
+<p>my_comment</p>
+<%= @post.my_comment.content if @post.my_comment %></br>
 <!--share한 다른 user의 코멘트-->
+<p>shared comment</p>
 <% @post.shared_comments.all.each do |comment| %>
-    <%= comment.writer %></br>
-    <%= comment.content %></br>
+    <%= comment.writer if comment%></br>
+    <%= comment.content if comment %></br>
 <% end %>
 <!--같은 링크에 대한 다른 user의 코멘트-->
+<p>unshared comment</p>
 <%= @post.same %>
 <% @post.same.all.each do |same| %>
-    <%#= same.user_id %></br>
+    <%= same.user_id %></br>
     <%= same.my_comment.content if same.my_comment%></br>
 <% end %>

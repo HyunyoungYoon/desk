@@ -19,5 +19,6 @@ Agenda.create(name: 'sharehouse boom')
 Post.create(url: 'http://www.cnews.co.kr/uhtml/read.jsp?idxno=201607061524574950273', agenda_id: 2)
 Comment.create(content: 'sharehouse supplying policy of the opposite party', post_id:3)
 
-Post.create(url: 'https://namu.wiki/w/THAAD', agenda_id: 37)
+Agenda.create(name: 'thaad deployment', user_id: 45)
+Post.create(url: 'https://namu.wiki/w/THAAD', agenda_id: 3)
 Comment.create(content: 'This is unshared comment written by user 45', post_id:4, writer: 45)

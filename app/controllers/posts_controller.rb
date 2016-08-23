@@ -15,7 +15,7 @@ class PostsController < ApplicationController
     # else choose one of existing agendas
     # @post = Post.new(post_existing_params)
     @post.save
-    redirect_to posts_path
+    redirect_to agenda_posts_path(@post.agenda_id)
   end
   
   # post를 수정하는 경우는 없다
@@ -24,8 +24,9 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
+    back = @post.agenda_id
     @post.destroy
-    redirect_to posts_path
+    redirect_to agenda_posts_path(back)
   end
   
   private

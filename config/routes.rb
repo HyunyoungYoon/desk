@@ -14,9 +14,11 @@ Rails.application.routes.draw do
   get 'discover/index'
   
   root 'home#index'
-
-  resources :agendas
-  resources :posts, except: [:edit, :update]
+  
+  resources :posts, only: [:new, :create, :destroy]
+  resources :agendas do
+    resources :posts, only: [:index, :show]
+  end
   resources :comments
   
   # The priority is based upon order of creation: first created -> highest priority.
