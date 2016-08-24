@@ -4,11 +4,11 @@ class PostsController < ApplicationController
   end
   def show
     @post = Post.find(params[:id])
-  end  
-  
+  end
+
   def new
     @post = Post.new
-  end  
+  end
   def create
     # if make a new agenda
     @post = Post.new(post_new_params)
@@ -17,7 +17,13 @@ class PostsController < ApplicationController
     @post.save
     redirect_to agenda_posts_path(@post.agenda_id)
   end
-  
+  def agendacheck
+    @agendanumber=params[:agenda_number]
+    agendaname = "#{Agenda.find(@agendanumber).name}"
+    render json: {keys: agendaname}
+  end
+
+
   # post를 수정하는 경우는 없다
   # 수정한다면 comment를 수정하겠지
   # 만약 다른 agenda랑 연결하고자 한다면?
@@ -28,7 +34,7 @@ class PostsController < ApplicationController
     @post.destroy
     redirect_to agenda_posts_path(back)
   end
-  
+
   private
   # params to make a new agenda
   def post_new_params

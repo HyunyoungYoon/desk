@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get 'mydesk/news2'
   get 'discover/index'
 
+  post 'posts/agendacheck'
+
   root 'home#index'
 
   resources :posts, only: [:new, :create, :destroy]
