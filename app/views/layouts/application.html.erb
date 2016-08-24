@@ -7,7 +7,8 @@
     <%= csrf_meta_tags %>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
-  <body id="background">
+  <body>
+  <div id="background">
     <nav name="header">
       <div class="nav-wrapper grey lighten-5">
         <a href="/home/index" class="brand-logo black-text" style="margin-left:120px;"><b>DESK</b></a>
@@ -39,6 +40,7 @@
       </ul>
 
     <%= yield %>
+  </div>
 
     <script>
       $(".dropdown-button").dropdown();

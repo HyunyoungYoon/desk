@@ -1,6 +1,7 @@
 class AgendasController < ApplicationController
   def index
     @agendas = Agenda.all
+    @following_agendas
 
     respond_to do |format|
       format.html # index.html.erb
@@ -67,6 +68,6 @@ class AgendasController < ApplicationController
   private
 
   def agenda_params
-    params.require(:agenda).permit(:name)
+    params.require(:agenda).permit(:name, :color)
   end
 end

@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-    belongs_to :agenda
+    belongs_to :agenda, -> {includes :user}
     accepts_nested_attributes_for :agenda
     
     has_many :comments, :dependent => :destroy
@@ -12,21 +12,17 @@ class Post < ActiveRecord::Base
    
     # return my comment: 해당 포스트에 속해 있으며 writer가 자기자신이다.
     def my_comment
-    #   self.comments.where(writer:self.user_id).first 
-      self.comments.where(writer: 1).first 
+      self.comments.where(writer: self.agenda.user_id).first 
     end
     
     # return an active record of (multiple) shared comments
     # 해당 포스트에 속해 있으며 writer는 자기 자신이 아니다.
     def shared_comments
-    #   self.comments.where.not(writer: current_user.id)
-      self.comments.where.not(writer: 1)
+      self.comments.where.not(writer: self.agenda.user_id)
     end
     
     # return posts with same url except self
     def same
-    #   posts = Post.except(self) # 왜 이거 안먹지
-    #   return posts.where(url: self.url)
-    Post.where(url: self.url).where.not(id: self.id)
+      Post.where(url: self.url).where.not(id: self.id)
     end
 end
