@@ -1,0 +1,14 @@
+<!--agenda info-->
+<h1><%= @agenda.name %></h1>
+
+<!--list of included posts-->
+<p><b>POSTS</b></p>
+<%= @agenda.posts.all.each do |p| %>
+  <%= p.url %></br>
+<% end %>
+
+<!--related posts curation-->
+<p><b>Contents Curation</b></p>
+<%= @agenda.related_posts.each do |p| %>
+  <%= p.url %></br>
+<% end %>

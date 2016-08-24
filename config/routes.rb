@@ -20,8 +20,8 @@ Rails.application.routes.draw do
   post 'posts/agendacheck'
 
   root 'home#index'
-
-  resources :posts, only: [:new, :create, :destroy]
+  
+  resources :posts, only: [:new, :create, :destroy], path: '/home'
   resources :agendas do
     resources :posts, only: [:index, :show]
   end
