@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
+
+  # urlinput이 form 형식의 refresh에서 되는지 테스트
+  get 'home/urlinput'
+
   get 'mydesk/index'
 
   get 'home/index'
@@ -12,7 +16,7 @@ Rails.application.routes.draw do
   get 'mydesk/news1'
   get 'mydesk/news2'
   get 'discover/index'
-  
+
   root 'home#index'
   
   resources :posts, only: [:new, :create, :destroy], path: '/home'
@@ -20,7 +24,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :show]
   end
   resources :comments
-  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
