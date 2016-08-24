@@ -1,42 +1,43 @@
 <div class="container">
   <div class="row">
     <!-- 입력하는 box가 있는 부분 : home.scss에 contextpostit CSS를 따로 적용시켜놓았다 -->
-    <%= form_for @post, :html => {:class => 'contextpostit', :id => 'urlinput'} do |f| %>
+    <%= form_for @post, :html => {:class => 'contextpostit', :id => 'urlinput', :style => "height:33em;"} do |f| %>
       <div class="col s8" style="margin-left:1em;">
         <i class="material-icons prefix">language</i>
         <%= f.label :icon_prefix, "URL :: 오늘 클리핑하고싶은 내용은 무엇인가요?", :style => "color:black; font-weight:bold;" %>
-        <%= f.text_field :url, class: "input-field", :style => "color:black; font-weight:bold;"  %>
-        <br>
-        <!--whether make new or choose one -->
-        <%#= f.check_box :field, {:class => "myclass", :style => "mystyle"}, "checked-value", "unchecked-value" %>
-
-        <!--새로운 agenda를 만들 때-!>
-        <%= f.fields_for :agenda, Agenda.new do |a| %>
-        <p>
-          <%= a.label :name, "새로운 어젠다 만들기" %><br />
-          <%= a.text_field :name %><br />
-        </p>
-        <% end %>
-
-        <!-기존 agenda 중 선택할 때-!>
-        <p>
-          <%= f.label :agenda_id, "기존 어젠다에서 선택하기", :style => "color:black; font-weight:bold;"  %>
-          <%= f.text_field :agenda_id, :style => "color:black; font-weight:bold;" %>
-        </p> -->
-
-        <%= link_to "기존 어젠다 선택하기", "#remainagenda", 'class'=> 'waves-effect waves-teal btn-flat modal-trigger', 'data-toggle' => 'modal' %> or <%= link_to "신규 어젠다 만들기", "#newagenda", 'class'=> 'waves-effect waves-teal btn-flat modal-trigger', 'data-toggle' => 'modal' %>
+        <%= f.text_field :url, class: "input-field", :style => "color:black; font-weight:bold;", :id => "icon_prefix"  %>
         <br>
 
-        <div id="agendaselect"></div><br>
+        <li><b>제목 : </b></li>
+          <!--whether make new or choose one -->
+          <%#= f.check_box :field, {:class => "myclass", :style => "mystyle"}, "checked-value", "unchecked-value" %>
 
-        <%= f.fields_for :comments, Comment.new do |c| %>
-        <p>
-          <%= c.label :content, "코멘트 달기", :style => "color:black; font-weight:bold;"  %><br />
-          <%= c.text_area :content, :rows => 3, :class => "materialize-textarea", :style => "color:black; font-weight:bold;"  %><br />
-        </p>
-        <% end %>
-        <br>
-        <%= f.submit "Clipping하기!", class: "btn waves-effect waves-light", :style => "color:black; font-weight:bold;" %><br>
+          <!--새로운 agenda를 만들 때-!>
+          <%= f.fields_for :agenda, Agenda.new do |a| %>
+          <p>
+            <%= a.label :name, "새로운 어젠다 만들기" %><br />
+            <%= a.text_field :name %><br />
+          </p>
+          <% end %>
+
+          <!-기존 agenda 중 선택할 때-!>
+          <p>
+            <%= f.label :agenda_id, "기존 어젠다에서 선택하기", :style => "color:black; font-weight:bold;"  %>
+            <%= f.text_field :agenda_id, :style => "color:black; font-weight:bold;" %>
+          </p> -->
+        <li><b>어젠다 :&nbsp;&nbsp;&nbsp;<%= link_to "기존 어젠다 선택하기", "#remainagenda", 'class'=> 'waves-effect waves-teal btn-flat modal-trigger', 'data-toggle' => 'modal' %> or <%= link_to "신규 어젠다 만들기", "#newagenda", 'class'=> 'waves-effect waves-teal btn-flat modal-trigger', 'data-toggle' => 'modal' %></b></li>
+        <!-- 어젠다가 선택된 뒤에 ajax에 의해 나타나는 div -->
+          <div id="agendaselect" style="font-weight:bold; margin-left:5em; line-height:2.2em;"></div>
+          <%= f.hidden_field :agenda_id, :id => "agendaselectnumber", :value => @agendanumber %>
+        <!-- 어젠다가 선택된 뒤에 ajax에 의해 나타나는 div -->
+        <li><b>코멘트 달기</b>
+          <%= f.fields_for :comments, Comment.new do |c| %>
+            <p>
+              <%= c.text_area :content, :rows => 3, :class => "materialize-textarea", :style => "color:black; font-weight:bold;"  %><br />
+            </p>
+          <% end %>
+        </li><br><br>
+        <%= f.submit "Clipping하기!", class: "btn waves-effect waves-light", :style => "color:white; font-weight:bold;" %><br>
       </div>
       <div class="col s3">
         <img src="/img/home/sample.jpeg" height="100%;" width="100%;">
@@ -176,6 +177,7 @@ $('.agenda_submit').click(function(){
       console.log("success");
         $('.modal').closeModal();
         $('#agendaselect').html(data.keys);
+        $('#agendaselectnumber').html(data.keyn);
     },
     error: function(data){
       console.log('Oh my god');

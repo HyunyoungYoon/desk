@@ -19,8 +19,9 @@ class PostsController < ApplicationController
   end
   def agendacheck
     @agendanumber=params[:agenda_number]
-    agendaname = "#{Agenda.find(@agendanumber).name}"
-    render json: {keys: agendaname}
+    agendaname = "이 포스트는 어젠다 #{Agenda.find(@agendanumber).name}에 포함될 것입니다."
+    agendanumber = @agendanumber
+    render json: {keys: agendaname, keyn: agendanumber}
   end
 
 
