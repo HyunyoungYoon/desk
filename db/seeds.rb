@@ -7,7 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-User.create()
+User.create(email: 'user1@snu.ac.kr', password: "12341234", password_confirmation:"12341234", created_at: "2016-08-23 05:07:09")
+User.create(email: "user2@snu.ac.kr", password:"12341234", password_confirmation:"12341234", created_at: "2016-08-23 05:07:09")
+
 Agenda.create(name: 'thaad', user_id: 1)
 Post.create(url: 'https://namu.wiki/w/THAAD', agenda_id: 1)
 Comment.create(content: 'this is what namu wiki says about thaad', post_id:1, writer: 1)

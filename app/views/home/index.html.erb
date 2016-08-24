@@ -1,26 +1,13 @@
 <div class="container">
   <div class="row">
     <!-- 입력하는 box가 있는 부분 : home.scss에 urlpostit CSS를 따로 적용시켜놓았다 -->
-    <form class="urlpostit" id="urlinput" action="#" method="post">
+    <form class="urlpostit", id="urlinput", action="/home/urlinput", method="get">
       <div class="row">
         <div class="input-field">
           <i class="material-icons prefix">language</i>
-          <input id="icon_prefix" type="text" class="validate" style="color:black;">
+          <input id="url" type="text" class="validate" style="color:black;">
           <label for="icon_prefix" style="color:black; font-size: 20px;"><b>URL :: 오늘의 어젠다는 무엇인가요?</b></label>
-        </div>
-      </div>
-        <!-- 처음에는 숨겨져있다가, 코드 맨 아래의 CHANGE jquery에 의해 입력상에 변화가 있게되면 contextpostit으로 바뀌게 된다 -->
-      <div class="row">
-        <div class="hiders" style="display:none; color:black;">
-          <div class="col s8" style="margin-left:1em;">
-            <li><b>제목 : </b></li>
-            <li><b>어젠다 :&nbsp;&nbsp;&nbsp;</b><a class="waves-effect waves-teal btn-flat modal-trigger" href="#remainagenda">기존 어젠다 선택하기</a> or <a class="waves-effect waves-teal btn-flat modal-trigger" href="#newagenda">신규 어젠다 만들기</a></li>
-            <li><b>코멘트 : <div class="input-field"><textarea id="comment" type="text" class="materialize-textarea"></textarea></div></li>
-            <a class="waves-effect waves-light btn" href="/mydesk/news1">Clipping하기!</a>
-          </div>
-          <div class="col s3">
-            <img src="/img/home/sample.jpeg" height="100%;" width="100%;">
-          </div>
+          <button class="submit">제출하기</button>
         </div>
       </div>
     </form>
@@ -144,15 +131,18 @@
 //       $('#urlinput').removeClass("contextpostit").attr('class','urlpostit');
 //     }
 
-  $(document).ready(function() {
-      // 입력창에서 입력했을 경우(변화가 생겼을 경우) 창이 넓어지면서 추가정보를 입력할 수 있도록
-      $("#icon_prefix").change(function(){
-        // alert("#icon_prefix");
-        $('.urlpostit').attr('class','contextpostit');
-        $('.hiders').slideToggle();
-      });
-        // 기존 어젠다, 신규 어젠다 선택 모달 띄우기
-        $('.modal-trigger').leanModal();
-    });
+// 입력창에서 입력했을 경우(변화가 생겼을 경우) 창이 넓어지면서 추가정보를 입력할 수 있도록
+// if ($("#urlinput").length) {
+//   alert("당신이 입력하신 url이 검색중입니다. 잠시만 기다려주세요.");
+//   $('.urlpostit').attr('class','contextpostit');
+//   $('.hiders').slideToggle();
+// }
+// else {
+//   alert("입력하신 내용이 없습니다.");
+//   $('.contextpostit').attr('class','urlpostit');
+// }
+
+// 기존 어젠다, 신규 어젠다 선택 모달 띄우기
+$('.modal-trigger').leanModal();
 
 </script>
