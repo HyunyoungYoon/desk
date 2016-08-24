@@ -1,0 +1,5 @@
+<% if Desking.where(agenda: agenda, user: current_user).empty?  %>
+  <%= link_to "팔로우 하기", desking_desking_path(agenda.id), class: "btn", method: :post, remote: true %>
+<% else %>
+  <%= link_to "팔로우 끊기", desking_desking_path(agenda.id), class: "btn", method: :post, remote: true %>
+<% end %>

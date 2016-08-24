@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  root 'home#index'
   get 'mydesk/index'
 
   get 'home/index'
@@ -11,14 +12,15 @@ Rails.application.routes.draw do
   get 'mydesk/agenda1'
   get 'mydesk/news1'
   get 'mydesk/news2'
+  get 'mydesk/follow'
   get 'discover/index'
-  
-  root 'home#index'
+  post 'desking/desking/:agenda_id' => 'desking#desking', as: :desking_desking
 
-  resources :agendas
-  resources :posts, except: [:edit, :update]
-  resources :comments
-  
+  resources :agendas do
+    resources :posts, except: [:edit, :update] do
+      resources :comments
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
