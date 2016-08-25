@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   post 'posts/agendacheck'
   post 'posts/urlinput'
+  post 'posts/share'
 
   resources :posts, only: [:new, :create, :destroy], path: '/home'
   resources :agendas do

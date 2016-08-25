@@ -1,5 +1,6 @@
 class MydeskController < ApplicationController
   def index
+    @posts = Post.all
   end
   def agenda
     @agendas = Agenda.all

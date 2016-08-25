@@ -6,6 +6,9 @@ class PostsController < ApplicationController
   end
   def show
     @post = Post.find(params[:id])
+    @my_comment = @post.comments.where(writer: current_user.id)
+    @share_comment = @post.comments.where(share: current_user.id)
+    @unshare_comment = @post.comments.where.not(writer: current_user.id, share: current_user.id)
   end
   def urlinput
     url_new = Url.new
@@ -61,6 +64,12 @@ class PostsController < ApplicationController
     back = @post.agenda_id
     @post.destroy
     redirect_to agenda_posts_path(back)
+  end
+
+  def share
+    Comment.create(post_id: params[:post_id], writer: params[:writer], content: params[:content], share: params[:share])
+
+    redirect_to :back
   end
 
   private
