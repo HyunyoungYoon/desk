@@ -1,0 +1,8 @@
+<p><b> <%= @agenda.name %></b></p>
+<p> <%= @agenda.color %></p>
+<p> <%= @agenda.user_id %></p>
+<p> <%= @agenda.created_at %></p>
+
+<div id="agenda_<%= @agenda.id %>">
+  <%= render partial: 'desking/desking', locals: { agenda: @agenda } %>
+</div>

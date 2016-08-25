@@ -1,0 +1,10 @@
+<!--my agenda-->
+<p><b>my agenda</b></p>
+<%= @my_agendas.all.each do |a| %>
+  <%= a.name %></br>
+  <%= a.color %>
+<% end %>
+
+<!--following agenda-->
+<p><b>agenda current user is following</b></p>
+
