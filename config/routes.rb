@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
+  root 'home#index'
 
   # urlinput이 form 형식의 refresh에서 되는지 테스트
   get 'home/urlinput'
-
-  get 'mydesk/index'
 
   get 'home/index'
   get 'home/loginpage'
@@ -15,12 +14,12 @@ Rails.application.routes.draw do
   get 'mydesk/agenda1'
   get 'mydesk/news1'
   get 'mydesk/news2'
+  get 'mydesk/follow'
   get 'discover/index'
+  post 'desking/desking/:agenda_id' => 'desking#desking', as: :desking_desking
 
   post 'posts/agendacheck'
 
-  root 'home#index'
-  
   resources :posts, only: [:new, :create, :destroy], path: '/home'
   resources :agendas do
     resources :posts, only: [:index, :show]
