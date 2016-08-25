@@ -23,6 +23,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @agenda = Agenda.new
   end
   
   
