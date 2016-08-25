@@ -2,6 +2,21 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
   end
+  
+  def urlinput
+    url_new = Url.new
+    url_new.url = params[:url]
+    clip = params[:url].scrapify(images: [:png, :jpg])
+    url_new.title = clip[:title]
+    url_new.abstract = clip[:description].gsub(/&nbsp;/,"")
+    url_new.pic = clip[:images][0]
+    
+    url_new.save
+    
+
+    @allurl = Url.all.order("created_at DESC").limit(1)
+  end
+  
   def show
     @post = Post.find(params[:id])
   end
@@ -9,6 +24,9 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
   end
+  
+  
+  
   def create
     # if make a new agenda
     agendaexisting = params[:agendaexisting]
