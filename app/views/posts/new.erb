@@ -1,48 +1,74 @@
 <div class="container">
-  <div class="row">
+  <div class="row urlpostit">
     <!-- 입력하는 box가 있는 부분 : home.scss에 contextpostit CSS를 따로 적용시켜놓았다 -->
-    <%= form_for @post, :html => {:class => 'contextpostit', :id => 'urlinput', :style => "height:33em;"} do |f| %>
-      <div class="col s8" style="margin-left:1em;">
-        <i class="material-icons prefix">language</i>
-        <%= f.label :icon_prefix, "URL :: 오늘 클리핑하고싶은 내용은 무엇인가요?", :style => "color:black; font-weight:bold;" %>
-        <%= f.text_field :url, class: "input-field", :style => "color:black; font-weight:bold;", :id => "icon_prefix"  %>
-        <br>
-
-        <li><b>제목 : </b></li>
-          <!--whether make new or choose one -->
-          <%#= f.check_box :field, {:class => "myclass", :style => "mystyle"}, "checked-value", "unchecked-value" %>
-
-          <!--새로운 agenda를 만들 때-!>
-          <%= f.fields_for :agenda, Agenda.new do |a| %>
-          <p>
-            <%= a.label :name, "새로운 어젠다 만들기" %><br />
-            <%= a.text_field :name %><br />
-          </p>
-          <% end %>
-
-          <!-기존 agenda 중 선택할 때-!>
-          <p>
-            <%= f.label :agenda_id, "기존 어젠다에서 선택하기", :style => "color:black; font-weight:bold;"  %>
-            <%= f.text_field :agenda_id, :style => "color:black; font-weight:bold;" %>
-          </p> -->
-        <li><b>어젠다 :&nbsp;&nbsp;&nbsp;<%= link_to "기존 어젠다 선택하기", "#remainagenda", 'class'=> 'waves-effect waves-teal btn-flat modal-trigger', 'data-toggle' => 'modal' %> or <%= link_to "신규 어젠다 만들기", "#newagenda", 'class'=> 'waves-effect waves-teal btn-flat modal-trigger', 'data-toggle' => 'modal' %></b></li>
-        <!-- 어젠다가 선택된 뒤에 ajax에 의해 나타나는 div -->
-          <div id="agendaselect" style="font-weight:bold; margin-left:5em; line-height:2.2em;"></div>
-          <%= f.hidden_field :agenda_id, :id => "agendaselectnumber" %>
-          <!-- 바로 아랫줄의 코드와 동일 <input type="hidden" id="agendaexisting" name="agendaexisting"> -->
-          <%= hidden_field_tag :agendaexisting, :id => "agendaexisting" %>
-        <!-- 어젠다가 선택된 뒤에 ajax에 의해 나타나는 div -->
-        <li><b>코멘트 달기</b>
-          <%= f.fields_for :comments, Comment.new do |c| %>
-            <p>
-              <%= c.text_area :content, :rows => 3, :class => "materialize-textarea", :style => "color:black; font-weight:bold;"  %><br />
-            </p>
-          <% end %>
-        </li><br><br>
-        <%= f.submit "Clipping하기!", class: "btn waves-effect waves-light", :style => "color:white; font-weight:bold;" %><br>
+    <%= form_for @post, :html => {:id => 'urlinput'} do |f| %>
+      <div class="row" style="margin-left:1em;">
+        <%= form_tag("/posts/urlinput", method: "post") do %>
+          <div class="col s10">
+            <i class="material-icons prefix">language</i>
+            <%= label_tag :icon_prefix, "URL :: 오늘 클리핑하고싶은 내용은 무엇인가요?", style: "color:black; font-weight:bold; font-size:1.5em;" %>
+            <%= text_field_tag :url, "", class: "urlinput", style: "color:black; font-weight:bold;", id: "icon_prefix" %>
+          </div>
+          <div class="col s2">
+            <%= button_tag "제출하기", type: "button", class: "urlsubmit btn waves-effect waves-light pink lighten-2", style: "margin-top:2em;" %>
+          </div>
+        <% end %>
       </div>
-      <div class="col s3">
-        <img src="/img/home/sample.jpeg" height="100%;" width="100%;">
+      <!-- 처음에는 숨겨져있다가, 코드 맨 아래의 CHANGE jquery에 의해 입력상에 변화가 있게되면 contextpostit으로 바뀌게 된다 -->
+      <div class="row">
+        <div class="hiders" style="display:none; color:black;">
+          <div class="col s7" style="margin-left:1em;">
+            <li><b>제목 : <div id="urltitle" style="margin-left:.9em;"></div></b></li>
+            <li class="hiders" style="display:none;"><b>기사 요약 : <div id="urlabstract" style="margin-left:.9em;"></div></b></li><br>
+            <!-- 제목을 hidden으로 전달하는 것 -->
+            <%= hidden_field_tag :title %>
+            <!-- 기사요약을 hidden으로 전달하는 것 -->
+            <%= hidden_field_tag :abstract %>
+              <!--whether make new or choose one -->
+              <%#= f.check_box :field, {:class => "myclass", :style => "mystyle"}, "checked-value", "unchecked-value" %>
+
+              <!--새로운 agenda를 만들 때-!>
+              <%= f.fields_for :agenda, Agenda.new do |a| %>
+              <p>
+                <%= a.label :name, "새로운 어젠다 만들기" %><br />
+                <%= a.text_field :name %><br />
+              </p>
+              <% end %>
+
+              <!-기존 agenda 중 선택할 때-!>
+              <p>
+                <%= f.label :agenda_id, "기존 어젠다에서 선택하기", :style => "color:black; font-weight:bold;"  %>
+                <%= f.text_field :agenda_id, :style => "color:black; font-weight:bold;" %>
+              </p> -->
+            <li><b>어젠다 :&nbsp;&nbsp;&nbsp;<%= link_to "기존 어젠다 선택하기", "#remainagenda", 'class'=> 'waves-effect waves-teal btn-flat modal-trigger', 'data-toggle' => 'modal' %> or <%= link_to "신규 어젠다 만들기", "#newagenda", 'class'=> 'waves-effect waves-teal btn-flat modal-trigger', 'data-toggle' => 'modal' %></b></li>
+            <!-- 어젠다가 선택된 뒤에 ajax에 의해 나타나는 div -->
+            <div id="agendaselect" style="font-weight:bold; margin-left:5em; line-height:2.2em;"></div>
+
+            <!-- 기존의 어젠다를 선택했을 경우 어떤 어젠다를 넘겨주는지, 새롭게 어젠다를 만들었을 경우 이름과 색깔이 무엇인지 알려주는 부분 -->
+              <!-- existing여부를 hidden으로 전달하는 것 -->
+              <%= hidden_field_tag :agendaexisting, :id => "agendaexisting" %>
+              <!-- 기존의 어젠다를 선택했을 경우 : 어떤 어젠다를 넘겨주는지 id를 hidden으로 넘겨주는 부분 -->
+              <%= f.hidden_field :agenda_id, :id => "agendaselectnumber" %>
+              <!-- 새로운 어젠다를 만들었을 경우 : 그 어젠다의 id, 이름, 색깔을 hidden으로 Agenda의 strong params에 전달 -->
+              <%= f.fields_for :agenda, Agenda.new do |c| %>
+                <%= c.hidden_field :id, :id => "agendanewnumber" %><br />
+                <%= c.hidden_field :name, :id => "agendanewname" %>
+                <%= c.hidden_field :color, :id => "agendanewcolor" %>
+              <% end %>
+
+            <li><b>코멘트 달기</b>
+              <%= f.fields_for :comments, Comment.new do |c| %>
+                <p>
+                  <%= c.text_area :content, :rows => 3, :class => "materialize-textarea", :style => "color:black; font-weight:bold;"  %>
+                </p>
+              <% end %>
+            </li>
+          </div>
+          <div class="col s3 offset-s1" style="text-align:center; vertical-align:middle;">
+            <img src="#" class="urlpic" style="max-height:330px; max-width:270px;"><br><br>
+            <%= f.submit "Clipping하기!", class: "btn-large waves-effect waves-light green darken-2", :style => "color:white; font-weight:bold; height:3em; margin-bottom:.2em; margin-left:20px; font-size:1.7em; padding-top:.5em;" %>
+          </div>
+        </div>
       </div>
     <% end %>
   </div>
@@ -107,7 +133,7 @@
             <div class="center-align">
                 <hr>
                   <div class="row center-align">
-                    <% for i in 1..6 do %>
+                    <% for i in 1..3 do %>
                       <button type="submit" value="<%= i %>" id="agenda<%= i %>" class="btn waves-effect waves-light agenda_submit" style="height:40px;"><b><%= Agenda.find(i).name %></b>
                       <input type="hidden" value="<%= i %>" id="agenda_number"/>
                       <%#= f.text_field :agenda_id, :class=> "hidden", :value=>"#{i}", :style => "color:black; font-weight:bold;" %></button>
@@ -130,13 +156,13 @@
                   <div class="row center-align">
                       <div class="input-field col m10 offset-m1 blue-text">
                           <i class="material-icons prefix">playlist_add</i>
-                          <%= label_tag(:icon_prefix, "어젠다 이름을 적어주세요!", :style => "color:black; font-weight:bold;") %>
-                          <%= text_field_tag(:name, :class => "input-field", :style => "color:black; font-weight:bold;", :id => "icon_prefix") %>
+                          <%= label_tag :icon_prefix, "어젠다 이름을 적어주세요!", style: "color:black; font-weight:bold;" %>
+                          <%= text_field_tag :name, "", class: "name", style: "color:black; font-weight:bold;", id: "icon_prefix" %>
                       </div>
                       <div class="input-field col m10 offset-m1 blue-text ">
                           <i class="material-icons prefix">invert_colors</i>
-                          <%= label_tag(:icon_prefix, "색깔을 선택해주세요!", :style => "color:black; font-weight:bold;") %>
-                          <%= text_field_tag(:color, :class => "input-field", :style => "color:black; font-weight:bold;", :id => "icon_prefix") %>
+                          <%= label_tag :icon_prefix, "색깔을 선택해주세요!", style: "color:black; font-weight:bold;" %>
+                          <%= text_field_tag :color, "", class: "color", style: "color:black; font-weight:bold;", id: "icon_prefix" %>
                       </div>
                   </div>
               <div class="divider"></div>
@@ -165,7 +191,35 @@
 // }
 // 기존 어젠다, 신규 어젠다 선택 모달 띄우기
 $('.modal-trigger').leanModal();
+
 //모달을 띄운 뒤에 선택하면 ajax로 전달되게 하기
+$('.urlsubmit').click(function(){
+  console.log($('.urlinput').val());
+  $.ajax({
+    method: "POST",
+    url: "/posts/urlinput",
+    data: { link: $('.urlinput').val()},
+    dataType: 'json',
+    success: function(data){
+      console.log("success");
+        $('.urlinput').html(data.keyi); //입력한 url을 그대로 보여주는 것
+        $('#urltitle').html(data.keyt); //입력한 url로 검색한 제목을 보여주는 것
+        $('.urlpostit').attr('class','contextpostit'); //입력창을 크게 키운 뒤
+        $('.hiders').slideToggle(); // 숨겨져있던 '제목'과 '기사요약'을 띄운다
+        $('#urlabstract').html(data.keya); //입력한 url로 검색한 요약내용을 보여주는 것
+
+        $('#title').val(data.keyt); //입력한 url로 검색한 제목을 hidden값으로 전달하는 것
+        $('#abstract').val(data.keya); //입력한 url로 검색한 기사요약을 hidden값으로 전달하는 것
+        $('.urlpic').html(data.keyp); //입력한 url로 검색한 그림을 보여주는 것
+        $('.urlpic').attr('src', data.keyp); //입력한 url로 검색한 그림을 보여주는 것
+    },
+    error: function(data){
+      console.log('Oh my god');
+    }
+  });
+});
+
+//기존의 어젠다를 선택한 뒤에 ajax로 전달되게 하기
 $('.agenda_submit').click(function(){
   console.log($(this).val());
   $.ajax({
@@ -175,10 +229,10 @@ $('.agenda_submit').click(function(){
     dataType: 'json',
     success: function(data){
       console.log("success");
+        $('#agendaselect').html(data.keys); //기존의 어젠다에 해당하는 이름을 hidden value로 전달하기 위한 것
+        $('#agendaselectnumber').val(data.keyn); //기존의 어젠다에 해당하는 id를 hidden value로 전달하기 위한 것
+        $('#agendaexisting').val(1); //기존의 어젠다를 사용했음을 전달하는 값
         $('.modal').closeModal();
-        $('#agendaselect').html(data.keys);
-        $('#agendaselectnumber').val(data.keyn);
-        $('#agendaexisting').val(1);
     },
     error: function(data){
       console.log('Oh my god');
@@ -191,8 +245,14 @@ $('.agenda_make').click(function(){
   console.log('새로운 어젠다를 만들었습니다');
   var name = $('.name').val();
   var color = $('.color').val();
-  alert('wowwow');
-  $('#agendaselect').html("이 포스트는 어젠다 " + name + "의 색깔 " + color + "에 포함될 것입니다.");
+  var current_agenda_number = <%= Agenda.count + 1 %>
+  $('#agendaselect').html("이 포스트는 어젠다 " + name  + "에 포함될 것입니다.");
+
+  $('#agendanewname').val(name); //어젠다를 새롭게 만든 뒤 hidden value로 이름을 전달하기 위한 것
+  $('#agendanewcolor').val(color); //어젠다를 새롭게 만든 뒤 hidden value로 색깔을 전달하기 위한 것
+  $('#agendanewnumber').val(current_agenda_number); //어젠다를 새롭게 만든 뒤 hidden value로 id값을 전달하기 위한 것
+  $('#agendaselectnumber').val(current_agenda_number); //어젠다를 새롭게 만든 뒤 hidden value로 id값을 전달하기 위한 것
+  $('#agendaexisting').val(0); //어젠다를 새롭게 만들었음을 전달하는 값
   $('.modal').closeModal();
 });
 
