@@ -24,11 +24,9 @@ Comment.create(content: 'sharehouse supplying policy of the opposite party', pos
 Agenda.create(name: 'thaad deployment', user_id: 45)
 Post.create(url: 'https://namu.wiki/w/THAAD', agenda_id: 3)
 Comment.create(content: 'This is unshared comment written by user 45', post_id:4, writer: 45)
-<<<<<<< HEAD
+
 Post.create(url: 'thaad url of agenda named thaad deployment', agenda_id: 3)
 # agenda 4
 Agenda.create(name: 'contention over thaad', user_id: 12)
 Post.create(url: 'https://namu.wiki/w/THAAD', agenda_id: 4)
 Post.create(url: 'thaad url of agenda named contention over thaad', agenda_id:4)
-=======
->>>>>>> 071ab07282a157955f91eaef13dea93c36e1a855

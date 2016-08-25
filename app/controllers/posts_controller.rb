@@ -11,11 +11,16 @@ class PostsController < ApplicationController
   end
   def create
     # if make a new agenda
-    @post = Post.new(post_new_params)
-    # else choose one of existing agendas
-    # @post = Post.new(post_existing_params)
-    @post.save
-    redirect_to agenda_posts_path(@post.agenda_id)
+    agendaexisting = params[:agendaexisting]
+    if agendaexisting == 0
+      @post = Post.new(post_new_params)
+      @post.save
+      # else choose one of existing agendas
+    else
+      @post = Post.new(post_existing_params)
+      @post.save
+    end
+    redirect_to agenda_posts_path(agenda_id: @post.agenda_id)
   end
   def agendacheck
     @agendanumber=params[:agenda_number]

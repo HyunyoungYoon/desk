@@ -28,7 +28,9 @@
         <li><b>어젠다 :&nbsp;&nbsp;&nbsp;<%= link_to "기존 어젠다 선택하기", "#remainagenda", 'class'=> 'waves-effect waves-teal btn-flat modal-trigger', 'data-toggle' => 'modal' %> or <%= link_to "신규 어젠다 만들기", "#newagenda", 'class'=> 'waves-effect waves-teal btn-flat modal-trigger', 'data-toggle' => 'modal' %></b></li>
         <!-- 어젠다가 선택된 뒤에 ajax에 의해 나타나는 div -->
           <div id="agendaselect" style="font-weight:bold; margin-left:5em; line-height:2.2em;"></div>
-          <%= f.hidden_field :agenda_id, :id => "agendaselectnumber", :value => @agendanumber %>
+          <%= f.hidden_field :agenda_id, :id => "agendaselectnumber" %>
+          <!-- 바로 아랫줄의 코드와 동일 <input type="hidden" id="agendaexisting" name="agendaexisting"> -->
+          <%= hidden_field_tag :agendaexisting, :id => "agendaexisting" %>
         <!-- 어젠다가 선택된 뒤에 ajax에 의해 나타나는 div -->
         <li><b>코멘트 달기</b>
           <%= f.fields_for :comments, Comment.new do |c| %>
@@ -177,7 +179,8 @@ $('.agenda_submit').click(function(){
       console.log("success");
         $('.modal').closeModal();
         $('#agendaselect').html(data.keys);
-        $('#agendaselectnumber').html(data.keyn);
+        $('#agendaselectnumber').val(data.keyn);
+        $('#agendaexisting').val(1);
     },
     error: function(data){
       console.log('Oh my god');
