@@ -8,6 +8,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @agenda = Agenda.new
   end
   def create
     # if make a new agenda

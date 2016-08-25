@@ -22,7 +22,7 @@ class AgendasController < ApplicationController
     respond_to do |format|
       if @agenda.save
         flash[:notice] = 'Agenda was successfully created.'
-        format.html { redirect_to(@agenda) }
+        format.html { redirect_to new_agenda_path }
         format.xml  { render xml: @agenda, status: :created, location: @agenda }
       else
         format.html { render action: 'new' }
