@@ -1,7 +1,13 @@
+<% require 'scrapifier' %>
 <% @allurl.each do |p| %>
 <%= p.url %>
-<% end %>
+<%= p.title %>
+<%= p.pic %>
+<%= p.abstract %>
+  <%= render partial: 'urlinput_result', locals: {f: p} %>
 
-<!-- $(".urlinput").html(
-  "<%= escape_javascript(render partial: 'home/urlinput_result', locals: { tag_team: @search_team }) %>"
-); -->
+<!-- $(".urlinput").html(-->
+<!--  "<%= escape_javascript(render partial: 'home/urlinput_result', locals: {f: p}) %>"-->
+<!--); -->-->
+
+<% end %>
