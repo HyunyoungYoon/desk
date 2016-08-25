@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   post 'desking/desking/:agenda_id' => 'desking#desking', as: :desking_desking
 
   post 'posts/agendacheck'
+  post 'posts/share'
 
   resources :posts, only: [:new, :create, :destroy], path: '/home'
   resources :agendas do

@@ -12,7 +12,7 @@ class Post < ActiveRecord::Base
    
     # return my comment: 해당 포스트에 속해 있으며 writer가 자기자신이다.
     def my_comment
-      self.comments.where(writer: self.agenda.user_id).first 
+      self.comments.where(writer: current_user.id)
     end
     
     # return an active record of (multiple) shared comments
