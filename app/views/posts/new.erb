@@ -7,7 +7,7 @@
           <div class="col s10">
             <i class="material-icons prefix">language</i>
             <%= label_tag :icon_prefix, "URL :: 오늘 클리핑하고싶은 내용은 무엇인가요?", style: "color:black; font-weight:bold; font-size:1.5em;" %>
-            <%= text_field_tag :url, "", class: "urlinput", style: "color:black; font-weight:bold;", id: "icon_prefix" %>
+            <%= f.text_field :url, class: "urlinput", style: "color:black; font-weight:bold;", id: "icon_prefix" %>
           </div>
           <div class="col s2">
             <%= button_tag "제출하기", type: "button", class: "urlsubmit btn waves-effect waves-light pink lighten-2", style: "margin-top:2em;" %>
@@ -20,12 +20,17 @@
           <div class="col s7" style="margin-left:1em;">
             <li><b>제목 : <div id="urltitle" style="margin-left:.9em;"></div></b></li>
             <li class="hiders" style="display:none;"><b>기사 요약 : <div id="urlabstract" style="margin-left:.9em;"></div></b></li><br>
+
+
+
             <!-- 제목을 hidden으로 전달하는 것 -->
-            <%= hidden_field_tag :title %>
+            <%= f.hidden_field :title, id: "title" %>
             <!-- 기사요약을 hidden으로 전달하는 것 -->
-            <%= hidden_field_tag :abstract %>
-              <!--whether make new or choose one -->
-              <%#= f.check_box :field, {:class => "myclass", :style => "mystyle"}, "checked-value", "unchecked-value" %>
+            <%= f.hidden_field :abstract, id: "abstract" %>
+
+
+
+
 
               <!--새로운 agenda를 만들 때-!>
               <%= f.fields_for :agenda, Agenda.new do |a| %>
@@ -41,6 +46,9 @@
                 <%= f.text_field :agenda_id, :style => "color:black; font-weight:bold;" %>
               </p> -->
             <li><b>어젠다 :&nbsp;&nbsp;&nbsp;<%= link_to "기존 어젠다 선택하기", "#remainagenda", 'class'=> 'waves-effect waves-teal btn-flat modal-trigger', 'data-toggle' => 'modal' %> or <%= link_to "신규 어젠다 만들기", "#newagenda", 'class'=> 'waves-effect waves-teal btn-flat modal-trigger', 'data-toggle' => 'modal' %></b></li>
+            
+            
+            
             <!-- 어젠다가 선택된 뒤에 ajax에 의해 나타나는 div -->
             <div id="agendaselect" style="font-weight:bold; margin-left:5em; line-height:2.2em;"></div>
 
@@ -51,10 +59,13 @@
               <%= f.hidden_field :agenda_id, id: "agendaselectnumber" %>
               <!-- 새로운 어젠다를 만들었을 경우 : 그 어젠다의 id, 이름, 색깔을 hidden으로 Agenda의 strong params에 전달 -->
               <%= f.fields_for :agenda, Agenda.new do |c| %>
-                <%= c.hidden_field :id, id: "agendanewnumber" %><br />
+                <%#= c.hidden_field :id, id: "agendanewnumber" %><br />
                 <%= c.hidden_field :name, id: "agendanewname" %>
                 <%= c.hidden_field :color, id: "agendanewcolor" %>
               <% end %>
+
+
+
 
             <li><b>코멘트 달기</b>
               <%= f.fields_for :comments, Comment.new do |c| %>
@@ -244,13 +255,13 @@ $('.agenda_make').click(function(){
   console.log('새로운 어젠다를 만들었습니다');
   var name = $('.name').val();
   var color = $('.color').val();
-  var current_agenda_number = <%= Agenda.count + 1 %>
+  // var current_agenda_number = <%#= Agenda.count + 1 %>
   $('#agendaselect').html("이 포스트는 어젠다 " + name  + "에 포함될 것입니다.");
 
   $('#agendanewname').val(name); //어젠다를 새롭게 만든 뒤 hidden value로 이름을 전달하기 위한 것
   $('#agendanewcolor').val(color); //어젠다를 새롭게 만든 뒤 hidden value로 색깔을 전달하기 위한 것
-  $('#agendanewnumber').val(current_agenda_number); //어젠다를 새롭게 만든 뒤 hidden value로 id값을 전달하기 위한 것
-  $('#agendaselectnumber').val(current_agenda_number); //어젠다를 새롭게 만든 뒤 hidden value로 id값을 전달하기 위한 것
+  // $('#agendanewnumber').val(current_agenda_number); //어젠다를 새롭게 만든 뒤 hidden value로 id값을 전달하기 위한 것
+  // $('#agendaselectnumber').val(current_agenda_number); //어젠다를 새롭게 만든 뒤 hidden value로 id값을 전달하기 위한 것
   $('#agendaexisting').val(0); //어젠다를 새롭게 만들었음을 전달하는 값
   $('.modal').closeModal();
 });
