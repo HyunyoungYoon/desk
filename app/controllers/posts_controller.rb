@@ -6,9 +6,9 @@ class PostsController < ApplicationController
   end
   def show
     @post = Post.find(params[:id])
-    @my_comment = @post.comments.where(writer: current_user.id)
-    @share_comment = @post.comments.where(share: current_user.id)
-    @unshare_comment = @post.comments.where.not(writer: current_user.id, share: current_user.id)
+    @my_comment = @post.comments.where(writer: current_user.id).first
+    @shared_comments = @post.comments.where(share: current_user.id)
+    @unshared_comments = @post.comments.where.not(writer: current_user.id, share: current_user.id)
   end
   def urlinput
     url_new = Url.new
@@ -36,11 +36,11 @@ class PostsController < ApplicationController
   def create
     agendaexisting = params[:agendaexisting]
     # if make a new agenda
-    if agendaexisting == 0
-      puts "좋은생각ㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱ"
+    agendaexisting = params[:agendaexisting]
+    if agendaexisting == '0'
       @post = Post.new(post_new_params)
       @post.save
-    # else choose one of existing agendas
+      # else choose one of existing agendas
     else
       @post = Post.new(post_existing_params)
       @post.save
@@ -76,7 +76,7 @@ class PostsController < ApplicationController
   private
   # params to make a new agenda
   def post_new_params
-    params.require(:post).permit(:url, :title, :abstract, comments_attributes: [:id, :content, :_destroy],
+    params.require(:post).permit(:url, :title, :pic, :abstract, comments_attributes: [:id, :content, :_destroy],
                                                           agenda_attributes: [:id, :name, :color])
   end
   # params to select one of existing agendas

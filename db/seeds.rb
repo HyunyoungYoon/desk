@@ -11,13 +11,13 @@ User.create(email: 'user1@snu.ac.kr', password: "12341234", password_confirmatio
 User.create(email: "user2@snu.ac.kr", password:"12341234", password_confirmation:"12341234", created_at: "2016-08-23 05:07:09")
 
 Agenda.create(name: 'thaad', user_id: 1)
-Post.create(url: 'https://namu.wiki/w/THAAD', agenda_id: 1)
+Post.create(url: 'https://namu.wiki/w/THAAD', agenda_id: 1, title: "thaad namuwiki")
 Comment.create(content: 'this is what namu wiki says about thaad', post_id: 1, writer: 1, share:1)
 Comment.create(content: 'This is a shared comment written by user 2', post_id: 1, writer: 2, share: 2)
-Post.create(url: 'http://kr.brainworld.com/Opinion/14573', agenda_id: 1)
+Post.create(url: 'http://kr.brainworld.com/Opinion/14573', agenda_id: 1, title: "opinion about thaad")
 Comment.create(content: 'introduction of a novel thaad', post_id: 2)
 # agenda 2
-Agenda.create(name: 'sharehouse boom')
+Agenda.create(name: 'sharehouse boom', user_id: 2)
 Post.create(url: 'http://www.cnews.co.kr/uhtml/read.jsp?idxno=201607061524574950273', agenda_id: 2)
 Comment.create(content: 'sharehouse supplying policy of the opposite party', post_id:3)
 # agenda 3

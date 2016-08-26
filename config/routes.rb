@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'home#index'
+  root 'posts#new'
 
   # urlinput이 form 형식의 refresh에서 되는지 테스트
   get 'home/urlinput'
