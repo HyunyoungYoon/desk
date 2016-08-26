@@ -35,15 +35,17 @@ class PostsController < ApplicationController
   end
   def create
     # if make a new agenda
-    agendaexisting = params[:agendaexisting]
-    if agendaexisting == 0
-      @post = Post.new(post_new_params)
-      @post.save
-      # else choose one of existing agendas
-    else
+
+    # agendaexisting = params[:agendaexisting]
+    # if agendaexisting == 0
+    #   @post = Post.new(post_new_params)
+    #   @post.save
+    #   # else choose one of existing agendas
+    # else
       @post = Post.new(post_existing_params)
       @post.save
-    end
+    # end
+
     redirect_to agenda_posts_path(agenda_id: @post.agenda_id)
   end
 
@@ -76,7 +78,7 @@ class PostsController < ApplicationController
   # params to make a new agenda
   def post_new_params
     params.require(:post).permit(:url, :title, :abstract, comments_attributes: [:id, :content, :_destroy],
-                                  agenda_attributes: [ :id, :name, :color])
+                                                          agenda_attributes: [:id, :name, :color])
   end
   # params to select one of existing agendas
   def post_existing_params
