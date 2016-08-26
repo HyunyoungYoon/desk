@@ -17,7 +17,7 @@ Comment.create(content: 'This is a shared comment written by user 2', post_id: 1
 Post.create(url: 'http://kr.brainworld.com/Opinion/14573', agenda_id: 1)
 Comment.create(content: 'introduction of a novel thaad', post_id: 2)
 # agenda 2
-Agenda.create(name: 'sharehouse boom')
+Agenda.create(name: 'sharehouse boom', user_id: 2)
 Post.create(url: 'http://www.cnews.co.kr/uhtml/read.jsp?idxno=201607061524574950273', agenda_id: 2)
 Comment.create(content: 'sharehouse supplying policy of the opposite party', post_id:3)
 # agenda 3
