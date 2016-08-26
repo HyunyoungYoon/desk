@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-    belongs_to :agenda, -> {includes :user}
+    belongs_to :agenda
     accepts_nested_attributes_for :agenda
     
     has_many :comments, :dependent => :destroy

@@ -31,7 +31,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-
+    @posts = Post.all
   end
   def create
     agendaexisting = params[:agendaexisting]
