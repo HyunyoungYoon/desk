@@ -30,5 +30,6 @@ Post.create(user_id: 2, agenda_id: 2, url: "https://www.soccerline.co.kr/slboard
 Post.create(user_id: 3, agenda_id: 3, url: "http://m.sports.naver.com/wfootball/news/read.nhn?oid=139&aid=0002059062", title: "西 마르카, \"포그바, 맨유 이적 합의\"... 5년 계약", pic: "/app/assets/images/pogba1.png", abstract: "[스포탈코리아] 김지우 기자= 폴 포그바(유벤투스)가 마침내 맨체스터 유나이티드(이하 맨유) 이적에 합의했다고 스페인 언론이 전했다.", view: true)
 
 Post.create(user_id: 4, agenda_id: 4, url: "http://m.sports.naver.com/wfootball/news/read.nhn?oid=139&aid=0002059062", title: "西 마르카, \"포그바, 맨유 이적 합의\"... 5년 계약", pic: "/app/assets/images/pogba1.png", abstract: "[스포탈코리아] 김지우 기자= 폴 포그바(유벤투스)가 마침내 맨체스터 유나이티드(이하 맨유) 이적에 합의했다고 스페인 언론이 전했다.")
+Post.create(url: 'https://namu.wiki/w/THAAD', agenda_id: 1, title: "thaad namuwiki")
 
 puts "seed 파일 생성 완료"

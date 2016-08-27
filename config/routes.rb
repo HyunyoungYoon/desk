@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   post 'posts/agendacheck'
   post 'posts/urlinput'
   post 'posts/share'
+  delete 'posts/share_destroy/:id' => 'posts#share_destroy', as: :posts_share_destroy
 
   resources :posts, only: [:new, :create, :destroy], path: '/home'
   resources :agendas do

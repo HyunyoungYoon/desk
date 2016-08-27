@@ -6,9 +6,9 @@ class PostsController < ApplicationController
   end
   def show
     @post = Post.find(params[:id])
-    @my_comment = @post.comments.where(writer: current_user.id)
-    @share_comment = @post.comments.where(share: current_user.id)
-    @unshare_comment = @post.comments.where.not(writer: current_user.id, share: current_user.id)
+    @my_comment = @post.comments.where(writer: current_user.id).first
+    @shared_comments = @post.comments.where(share: current_user.id)
+    @unshared_comments = @post.comments.where.not(writer: current_user.id, share: current_user.id)
   end
   def urlinput
     url_new = Url.new
@@ -31,9 +31,10 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @agenda = Agenda.new
+    @posts = Post.all
   end
   def create
+    agendaexisting = params[:agendaexisting]
     # if make a new agenda
     agendaexisting = params[:agendaexisting]
     if agendaexisting == '0'
@@ -44,7 +45,6 @@ class PostsController < ApplicationController
       @post = Post.new(post_existing_params)
       @post.save
     end
-
     redirect_to agenda_posts_path(agenda_id: @post.agenda_id)
   end
 
@@ -73,15 +73,21 @@ class PostsController < ApplicationController
     redirect_to :back
   end
 
+  def share_destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+
+    redirect_to :back
+  end
   private
   # params to make a new agenda
   def post_new_params
-    params.require(:post).permit(:url, :title, :abstract, comments_attributes: [:id, :content, :_destroy],
+    params.require(:post).permit(:url, :title, :pic, :abstract, comments_attributes: [:id, :content, :_destroy],
                                                           agenda_attributes: [:id, :name, :color])
   end
   # params to select one of existing agendas
   def post_existing_params
-    params.require(:post).permit(:url, :title, :abstract, :agenda_id, comments_attributes: [:id, :content, :_destroy])
+    params.require(:post).permit(:url, :title, :pic, :abstract, :agenda_id, comments_attributes: [:id, :content, :_destroy])
   end
 
 end

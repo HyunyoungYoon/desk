@@ -20,12 +20,16 @@
           <div class="col s7" style="margin-left:1em;">
             <li><b>제목 : <div id="urltitle" style="margin-left:.9em;"></div></b></li>
             <li class="hiders" style="display:none;"><b>기사 요약 : <div id="urlabstract" style="margin-left:.9em;"></div></b></li><br>
+
+
+
             <!-- 제목을 hidden으로 전달하는 것 -->
             <%= f.hidden_field :title, id: "title" %>
             <!-- 기사요약을 hidden으로 전달하는 것 -->
             <%= f.hidden_field :abstract, id: "abstract" %>
-              <!--whether make new or choose one -->
-              <%#= f.check_box :field, {:class => "myclass", :style => "mystyle"}, "checked-value", "unchecked-value" %>
+            <%= f.hidden_field :pic, id: "pic" %>
+
+
 
               <!--새로운 agenda를 만들 때-!>
               <%= f.fields_for :agenda, Agenda.new do |a| %>
@@ -41,6 +45,9 @@
                 <%= f.text_field :agenda_id, :style => "color:black; font-weight:bold;" %>
               </p> -->
             <li><b>어젠다 :&nbsp;&nbsp;&nbsp;<%= link_to "기존 어젠다 선택하기", "#remainagenda", 'class'=> 'waves-effect waves-teal btn-flat modal-trigger', 'data-toggle' => 'modal' %> or <%= link_to "신규 어젠다 만들기", "#newagenda", 'class'=> 'waves-effect waves-teal btn-flat modal-trigger', 'data-toggle' => 'modal' %></b></li>
+            
+            
+            
             <!-- 어젠다가 선택된 뒤에 ajax에 의해 나타나는 div -->
             <div id="agendaselect" style="font-weight:bold; margin-left:5em; line-height:2.2em;"></div>
 
@@ -51,9 +58,13 @@
               <%= f.hidden_field :agenda_id, id: "agendaselectnumber" %>
               <!-- 새로운 어젠다를 만들었을 경우 : 그 어젠다의 id, 이름, 색깔을 hidden으로 Agenda의 strong params에 전달 -->
               <%= f.fields_for :agenda, Agenda.new do |c| %>
+
                 <%= c.hidden_field :name, id: "agendanewname" %>
                 <%= c.hidden_field :color, id: "agendanewcolor" %>
               <% end %>
+
+
+
 
             <li><b>코멘트 달기</b>
               <%= f.fields_for :comments, Comment.new do |c| %>
@@ -74,105 +85,86 @@
 
   <div class="row unreadpostit"><br>
     <p style="font-size: 20px; margin-left:1em;"><b><i class="material-icons">youtube_searched_for</i>&nbsp;아직 읽지 않은 기사들</b></p>
-    <div class="card col s4">
-      <div class="card-image waves-effect waves-block waves-light">
-        <a href="/mydesk/news2">
-          <img class="activator" src="/img/mydesk/post/example2.jpeg" height="300px" width="300px">
-        </a>
-      </div>
-      <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4">그의 도전은 어디까지인가<i class="material-icons right">more_vert</i></span>
-        <!-- 기사에 대한 링크를 걸어놓은 부분 -->
-        <p><a href="http://www.irobotnews.com/news/articleView.html?idxno=8213">테슬라, 그 이후는?</a></p>
-      </div>
-
-    <!-- 그 기사에 대한 Author의 댓글(comment)가 담겨있는 부분 : 어떻게 보여주는 것이 좋을지 고민해보기
-      <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">엘론머스크다!<i class="material-icons right">close</i></span>
-        <p>음.. 테슬라와 솔라시티, 스페이스X에 이어 다음으로 엘론머스크가 진출할 사업은 아마 로봇이 아닐까싶다.</p>
-      </div>
-     -->
-
-    </div>
-    <div class="card col s4">
-      <div class="card-image waves-effect waves-block waves-light">
-        <img class="activator" src="/img/mydesk/post/example3.jpg" height="300px" width="300px">
-      </div>
-      <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4">애니메이션과 사회<i class="material-icons right">more_vert</i></span>
-        <p><a href="http://www.sedaily.com/Photo/NewsView/1KYYATYBWC">픽사로 인해 이슈가 된 3D 애니메이션은..</a></p>
-      </div>
-      <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">미니언즈 발견!!<i class="material-icons right">close</i></span>
-        <p>미니언들, 그들은 과연 어디서 왔다가 어디로 가는것일까?</p>
-      </div>
-    </div>
-    <div class="card col s4">
-      <div class="card-image waves-effect waves-block waves-light">
-        <img class="activator" src="/img/mydesk/post/example1.png" height="300px" width="300px">
-      </div>
-      <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4">피카츄가 한국에!!<i class="material-icons right">more_vert</i></span>
-        <p><a href="http://www.visualdive.com/2016/07/%ED%98%84%EC%8B%A4%EC%97%90%EC%84%9C-%EB%A7%8C%EB%82%98%EB%8A%94-%ED%94%BC%EC%B9%B4%EC%B8%84-%ED%8F%AC%EC%BC%93%EB%AA%AC%EA%B3%A0-%E7%BE%8E%EC%84%9C-%ED%8F%AD%EB%B0%9C/">포켓몬고, 한국시장 진출?!</a></p>
-      </div>
-      <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">피카츄가 한국에!!<i class="material-icons right">close</i></span>
-        <p>피카츄는 귀엽다 짱이다</p>
-      </div>
-    </div>
+    <!--post card-->
+    <% if user_signed_in? %>
+      <% @posts.each do |p| %>
+        <div class="card col s4">
+          <div class="card-image waves-effect waves-block waves-light">
+            <a href="/agendas/<%= p.agenda_id %>/posts/<%= p.id %>">
+              <img class="activator" src="<%= p.pic %>" height="300px" width="300px">
+            </a>
+          </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4"><a href="<%= p.url %>"><%= p.title %></a>
+            <i class="material-icons right">more_vert</i></span>
+            <p><%= p.my_comment(current_user).content if p.my_comment(current_user) %></p>
+          </div>
+    
+        <!--그 기사에 대한 Author의 댓글(comment)가 담겨있는 부분 : 어떻게 보여주는 것이 좋을지 고민해보기-->
+        <!--  <div class="card-reveal">-->
+        <!--    <span class="card-title grey-text text-darken-4">엘론머스크다!<i class="material-icons right">close</i></span>-->
+        <!--    <p>음.. 테슬라와 솔라시티, 스페이스X에 이어 다음으로 엘론머스크가 진출할 사업은 아마 로봇이 아닐까싶다.</p>-->
+        <!--  </div>-->
+        </div>
+      <% end %>
+    <% end %>
+    
+    
   </div>
 </div>
 
 
-  <!-- Modal 창 -->
-    <!--기존어젠다 선택하는 모달창-->
-    <div id="remainagenda" class="modal" style="width:50%;">
-        <div class="modal-content">
-            <h4 class="center-align">기존어젠다 선택하기</h4>
-            <div class="center-align">
-                <hr>
-                  <div class="row center-align">
-                    <% for i in 1..3 do %>
-                      <button type="submit" value="<%= i %>" id="agenda<%= i %>" class="btn waves-effect waves-light agenda_submit" style="height:40px;"><b><%= Agenda.find(i).name %></b>
-                      <input type="hidden" value="<%= i %>" id="agenda_number"/>
-                      <%#= f.text_field :agenda_id, :class=> "hidden", :value=>"#{i}", :style => "color:black; font-weight:bold;" %></button>
-                    <% end %>
-                  </div>
-                <div class="divider"></div>
-                <p>
-                  <a href="#newagenda" class="btn btn-flat modal-close modal-trigger">새로운 어젠다 만들기</a> &nbsp;
-                  <a href="#" class="btn btn-flat modal-close">Cancel</a> &nbsp;
-                </p>
+<!-- Modal 창 -->
+<!--기존어젠다 선택하는 모달창-->
+<div id="remainagenda" class="modal" style="width:50%;">
+  <div class="modal-content">
+      <h4 class="center-align">기존어젠다 선택하기</h4>
+      <div class="center-align">
+          <hr>
+            <div class="row center-align">
+              <% for i in 1..3 do %>
+                <button type="submit" value="<%= i %>" id="agenda<%= i %>" class="btn waves-effect waves-light agenda_submit" style="height:40px;"><b><%= Agenda.find(i).name %></b>
+                <input type="hidden" value="<%= i %>" id="agenda_number"/>
+                <%#= f.text_field :agenda_id, :class=> "hidden", :value=>"#{i}", :style => "color:black; font-weight:bold;" %></button>
+              <% end %>
             </div>
-        </div>
+          <div class="divider"></div>
+          <p>
+            <a href="#newagenda" class="btn btn-flat modal-close modal-trigger">새로운 어젠다 만들기</a> &nbsp;
+            <a href="#" class="btn btn-flat modal-close">Cancel</a> &nbsp;
+          </p>
+      </div>
+  </div>
+</div>
+
+<!--신규어젠다를 만드는 모달창-->
+<div id="newagenda" class="modal" style="width:40%;">
+  <div class="modal-content">
+      <h4 class="center-align">새로운 어젠다 만들기</h4><br>
+      <div class="center-align">
+          <div class="divider"></div>
+            <div class="row center-align">
+                <div class="input-field col m10 offset-m1 blue-text">
+                    <i class="material-icons prefix">playlist_add</i>
+                    <%= label_tag :icon_prefix, "어젠다 이름을 적어주세요!", style: "color:black; font-weight:bold;" %>
+                    <%= text_field_tag :name, "", class: "name", style: "color:black; font-weight:bold;", id: "icon_prefix" %>
+                </div>
+                <div class="input-field col m10 offset-m1 blue-text ">
+                    <i class="material-icons prefix">invert_colors</i>
+                    <%= label_tag :icon_prefix, "색깔을 선택해주세요!", style: "color:black; font-weight:bold;" %>
+                    <%= text_field_tag :color, "", class: "color", style: "color:black; font-weight:bold;", id: "icon_prefix" %>
+                </div>
+            </div>
+        <div class="divider"></div>
+        <p style="text-align:center;">
+          <a href="#" class="btn btn-flat modal-close">Cancel</a> &nbsp;
+          <%= button_tag("등록하기", :class => "waves-effect waves-blue btn btn-flat modal-action modal-close agenda_make") %><br>
+        </p>
     </div>
-    <!--신규어젠다를 만드는 모달창-->
-    <div id="newagenda" class="modal" style="width:40%;">
-        <div class="modal-content">
-            <h4 class="center-align">새로운 어젠다 만들기</h4><br>
-            <div class="center-align">
-                <div class="divider"></div>
-                  <div class="row center-align">
-                      <div class="input-field col m10 offset-m1 blue-text">
-                          <i class="material-icons prefix">playlist_add</i>
-                          <%= label_tag :icon_prefix, "어젠다 이름을 적어주세요!", style: "color:black; font-weight:bold;" %>
-                          <%= text_field_tag :name, "", class: "name", style: "color:black; font-weight:bold;", id: "icon_prefix" %>
-                      </div>
-                      <div class="input-field col m10 offset-m1 blue-text ">
-                          <i class="material-icons prefix">invert_colors</i>
-                          <%= label_tag :icon_prefix, "색깔을 선택해주세요!", style: "color:black; font-weight:bold;" %>
-                          <%= text_field_tag :color, "", class: "color", style: "color:black; font-weight:bold;", id: "icon_prefix" %>
-                      </div>
-                  </div>
-              <div class="divider"></div>
-              <p style="text-align:center;">
-                <a href="#" class="btn btn-flat modal-close">Cancel</a> &nbsp;
-                <%= button_tag("등록하기", :class => "waves-effect waves-blue btn btn-flat modal-action modal-close agenda_make") %><br>
-              </p>
-          </div>
-        </div>
-    </div>
-  <!-- Modal 창 -->
+  </div>
+</div>
+
+  
 <script>
 // 입력창이 비어있을경우 원래자리로 돌려놓기위한 시도
 // if($("#icon_prefix").val() == ""){
@@ -207,9 +199,10 @@ $('.urlsubmit').click(function(){
         $('.hiders').slideToggle(); // 숨겨져있던 '제목'과 '기사요약'을 띄운다
         $('#urlabstract').html(data.keya); //입력한 url로 검색한 요약내용을 보여주는 것
         $('.urlpic').attr('src', data.keyp); //입력한 url로 검색한 그림을 보여주는 것
-
+        
         $('#title').val(data.keyt); //입력한 url로 검색한 제목을 hidden값으로 전달하는 것
         $('#abstract').val(data.keya); //입력한 url로 검색한 기사요약을 hidden값으로 전달하는 것
+        $('#pic').val(data.keyp);
     },
     error: function(data){
       console.log('Oh my god');
@@ -246,10 +239,12 @@ $('.agenda_make').click(function(){
   console.log('새로운 어젠다를 만들었습니다');
   var name = $('.name').val();
   var color = $('.color').val();
+
   $('#agendaselect').html("이 포스트는 어젠다 " + name  + "에 포함될 것입니다.");
 
   $('#agendanewname').val(name); //어젠다를 새롭게 만든 뒤 hidden value로 이름을 전달하기 위한 것
   $('#agendanewcolor').val(color); //어젠다를 새롭게 만든 뒤 hidden value로 색깔을 전달하기 위한 것
+
   $('#agendaexisting').val(0); //어젠다를 새롭게 만들었음을 전달하는 값
   $('.modal').closeModal();
 });

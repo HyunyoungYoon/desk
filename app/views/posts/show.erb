@@ -1,23 +1,92 @@
-<!--post의 내용-->
-<%= @post.url %>
-<%= @post.title %>
-<%#= @post.agenda.name %>
-<%#= @post.pic %>
-<%#= @post.abstract %>
+<div class="row">
+  <div class="col s12 m9 l8 offset-l1">
+    <div class="row postit">
+      <div class="col s5">
+        <span class="paper-clip"></span>
+        <!-- 포스트를 수정하는 부분 -->
+        <div class="fixed-action-btn horizontal" style="top:1em;">
+          <a class="btn-floating">
+            <i class="large material-icons yellow darken-1">mode_edit</i>
+          </a>
+          <ul>
+            <li><a class="btn-floating yellow darken-1" href="#"><i class="material-icons">mode_edit</i></a></li>
+            <li><a class="btn-floating red" href="#"><i class="material-icons">delete</i></a></li>
+          </ul>
+        </div>
+        <!-- 포스트를 수정하는 부분 -->
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src="<%= @post.pic %>" height="320em" width="240em">
+        </div>
+      </div>
+      <div class="col s7">
+        <h4 style="text-align:center;"><%= @post.title %>
+        <p><a href="<%= @post.url %>"><%= @post.abstract %></a></p>
+        </h4>
+      </div>
+    </div><br>
+    <div class="row mypostit">
+      <div class="col s12">
+        <span class="paper-clip"></span>
+        <!-- Comment를 수정하는 부분 -->
+        <div class="fixed-action-btn horizontal" style="top:1em;">
+          <a class="btn-floating">
+            <i class="large material-icons yellow darken-1">mode_edit</i>
+          </a>
+          <ul>
+            <li><a class="btn-floating yellow darken-1" href="#"><i class="material-icons">mode_edit</i></a></li>
+            <li><a class="btn-floating red" href="#"><i class="material-icons">delete</i></a></li>
+          </ul>
+        </div>
+        <!-- My comment -->
+        <h3 style="margin-left:2px; margin-top:2px;"><b>My Comment</b></h3>
+        <div class="text" style="font-size: 25px;">
+          <% unless @my_comment.content.empty? %>
+            <%= @my_comment.content %></br>
+          <% end %>
+        </div>
+        <div class="time">5 min ago</div>
+      </div>
+    </div><br><hr><br>  
+    <!--shared comments-->
+    <div class="row commentpostit">
+      <% @shared_comments.each do |c|%>
+        <div class="chat-body">
+          <i class="pin"></i>
+          <div class="answer left">
+            <div class="text">
+              <%= c.content %> <%= link_to "DELELTE", posts_share_destroy_path(c.id), method: 'delete' %></br>
+            </div>
+          </div>
+        </div><br>
+      <% end %>    
+    </div>
 
+    <!-- Comment에 해당하는 부분이 달리는 곳 : mydesk.scss에 해당하는 css값들을 넣어둠-->
+    <!--unshared comments-->    
+    <div class="row commentpostit">
+      <% @unshared_comments.each do |c|%>
+        <div class="chat-body">
+          <i class="pin"></i>
+          <div class="answer left">
+            <div class="avatar">
+              <img src="/img/user2.gif" alt="User name" style="width:3em; height:4em;">
+              <div class="status offline"></div>
+            </div>
+            <div class="text">
+              <%= c.content %> <%= link_to "SHARE", posts_share_path(post_id: c.post_id, content: c.content, writer: c.writer, share: current_user.id), method: 'post' %></br>              
+            </div>
+            <div class="time">7 min ago &nbsp;&nbsp;&nbsp;<a class="btn-floating red" href="#"><i class="small material-icons">delete</i></a></div>
+          </div>
+        </div><br>
+      <% end %>    
+    </div>
 
-<!--자신이 쓴 코멘트-->
-<p><%= current_user.id %>'s comment</p>
-<% unless @my_comment.empty? %>
-  <%= @my_comment.content %></br>
-<% end %>
-<!--share한 다른 user의 코멘트-->
-<p>shared comment</p>
-<% @share_comment.each do |c|%>
-  <%= c.content %></br>
-<% end %>
-<!--같은 링크에 대한 다른 user의 코멘트-->
-<p>another comment</p>
-<% @unshare_comment.each do |c|%>
-  <%= c.content %> <%= link_to "SHARE", posts_share_path(post_id: c.post_id, content: c.content, writer: c.writer, share: current_user.id), method: 'post' %></br>
-<% end %>
+    <div class="col hide-on-small-only m3 l2">
+      <%= render partial: "recommend", :locals => { :p => @post } %>
+    </div>
+  </div>
+</div>
+
+  <script>
+$('#recommend').pushpin({ top:$('#recommend').offset().top });
+  </script>
