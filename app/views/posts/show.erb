@@ -14,10 +14,10 @@
 <!--share한 다른 user의 코멘트-->
 <p>shared comment</p>
 <% @share_comment.each do |c|%>
-  <%= c.content %></br>
+  <%= c.content %> <%= link_to "DELELTE", posts_share_destroy_path(c.id), method: 'delete' %></br>
 <% end %>
 <!--같은 링크에 대한 다른 user의 코멘트-->
 <p>another comment</p>
 <% @unshare_comment.each do |c|%>
-  <%= c.content %> <%= link_to "SHARE", posts_share_path(post_id: c.post_id, content: c.content, writer: c.writer, share: current_user.id), method: 'post' %></br>
+  <%= c.content %> <%= link_to "CLIP", posts_share_path(post_id: c.post_id, content: c.content, writer: c.writer, share: current_user.id), method: 'post' %></br>
 <% end %>
