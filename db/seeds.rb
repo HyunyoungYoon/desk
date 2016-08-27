@@ -32,4 +32,15 @@ Post.create(user_id: 3, agenda_id: 3, url: "http://m.sports.naver.com/wfootball/
 Post.create(user_id: 4, agenda_id: 4, url: "http://m.sports.naver.com/wfootball/news/read.nhn?oid=139&aid=0002059062", title: "西 마르카, \"포그바, 맨유 이적 합의\"... 5년 계약", pic: "/app/assets/images/pogba1.png", abstract: "[스포탈코리아] 김지우 기자= 폴 포그바(유벤투스)가 마침내 맨체스터 유나이티드(이하 맨유) 이적에 합의했다고 스페인 언론이 전했다.")
 Post.create(url: 'https://namu.wiki/w/THAAD', agenda_id: 1, title: "thaad namuwiki")
 
+Comment.create(post_id: 1, content: "마르카 공식 홈페이지는 물론 홈페이지 내 확실하지 않은 가쉽거리 올라오는 페이지에도 포그바 관련 글이 없는데 뭘 보고 마르카라고 제목 붙인거죠 김지우기자는? 조회수 노리고 허위제목 붙인거면 심각할 정도로 언론인의 윤리적 자세에 위배되는 것 아닌가요? 동일한 댓글에 비공감 누르는 건 기자 본인인가요? 해명이 필요해보입니다", writer: 1, share: 4)
+Comment.create(post_id: 1, content: "베일보다.. 호날두보다.. 높은 가치가 있을까..", writer: 2, share: 1)
+Comment.create(post_id: 1, content: "무리뉴 파워 ㄷ ㄷ하네", writer: 3, share: 2)
+Comment.create(post_id: 1, content: "라이올라가 이 말을 했댄다.....이적할거면 맨유로만 이적할거라고", writer: 3)
+Comment.create(post_id: 1, content: "그리고 이글은 성지가 되었죠", writer: 4)
+
+
+Comment.create(post_id: 1, content: "그리고 이글은 성지가 되었죠", writer: 4)
+Comment.create(post_id: 1, content: "그리고 이글은 성지가 되었죠", writer: 4)
+Comment.create(post_id: 1, content: "그리고 이글은 성지가 되었죠", writer: 4)
+
 puts "seed 파일 생성 완료"
