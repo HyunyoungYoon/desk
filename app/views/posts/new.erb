@@ -91,7 +91,7 @@
         <div class="card col s4">
           <div class="card-image waves-effect waves-block waves-light">
             <a href="/agendas/<%= p.agenda_id %>/posts/<%= p.id %>">
-              <img class="activator" src="<%= p.pic %>" height="300px" width="300px">
+              <img class="activator" src="<%= asset_path("#{p.pic}") %>" height="300px" width="300px">
             </a>
           </div>
           <div class="card-content">
