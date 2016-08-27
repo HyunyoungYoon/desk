@@ -11,6 +11,7 @@ puts "seed 파일 생성 시작"
 User.create(email: 'user1@snu.ac.kr', password: "12341234", password_confirmation: "12341234", created_at: "2016-08-23 05:07:09", is_admin: true)
 User.create(email: "user2@snu.ac.kr", password: "12341234", password_confirmation: "12341234", created_at: "2016-08-23 05:07:09", is_admin: true)
 User.create(email: "user3@snu.ac.kr", password: "12341234", password_confirmation: "12341234", created_at: DateTime.now, is_admin: true)
+User.create(email: "user4@snu.ac.kr", password: "12341234", password_confirmation: "12341234", created_at: DateTime.now, is_admin: true)
 
 Agenda.create(name: "맨체스터 유나이티드 이적", color: "red", user_id: 1)
 Agenda.create(name: "맨체스터 유나이티드", color: "red", user_id: 2)
@@ -39,8 +40,15 @@ Comment.create(post_id: 1, content: "라이올라가 이 말을 했댄다.....�
 Comment.create(post_id: 1, content: "그리고 이글은 성지가 되었죠", writer: 4)
 
 
-Comment.create(post_id: 1, content: "그리고 이글은 성지가 되었죠", writer: 4)
-Comment.create(post_id: 1, content: "그리고 이글은 성지가 되었죠", writer: 4)
-Comment.create(post_id: 1, content: "그리고 이글은 성지가 되었죠", writer: 4)
+Comment.create(post_id: 1, content: "이글은 성지가 되었죠", writer: 4)
+Comment.create(post_id: 2, content: "즐라탄을 3글자로 표현하자면 `신현준`", writer: 3)
+Comment.create(post_id: 3, content: "캬 옆동네 마네랑 비교되네ㅋㅋㅋㅋ심지어 더 싸게삼", writer: 2)
+Comment.create(post_id: 4, content: "즐라탄이 드디어 epl에.. 이번에도 리그 우승트로피 수집 할 수 있을까 ㅋㅋㅋㅋㅋ", writer: 1)
+Comment.create(post_id: 5, content: "올레", writer: 2)
+Comment.create(post_id: 6, content: "응.아니야.....", writer: 3)
+Comment.create(post_id: 7, content: "신현준을 이길 드립이 생각나지 않는다", writer: 4)
+Comment.create(post_id: 8, content: "하..진짜 눈물난다 이 소식을 얼마나 기다렸냐", writer: 3)
+Comment.create(post_id: 9, content: "임마들은 포그바오면 유니폼팔리는것만 생각하지 우드워드는 무서운사람이다 유니폼보다 무리뉴 므키타리안 즐라탄등을 영입해서 주식상장이나 투자자들한테 투자받는 금액은 어마무시하지 맨유는 부도날 걱정없으니까 니들 밥걱정이나 하는게 낫겠다", writer: 2)
+Comment.create(post_id: 10, content: "ㅋㅋㅋㅋ공짜로 주고 1500억으로 다시 살려고하고ㄷㄷ", writer: 1)
 
 puts "seed 파일 생성 완료"
