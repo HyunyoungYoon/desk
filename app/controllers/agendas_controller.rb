@@ -1,7 +1,6 @@
 class AgendasController < ApplicationController
   def index
     @agendas = Agenda.all
-    @following_agendas
 
     respond_to do |format|
       format.html # index.html.erb
