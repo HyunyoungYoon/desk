@@ -40,7 +40,7 @@
         <!-- My comment -->
         <h3 style="margin-left:2px; margin-top:2px;"><b>My Comment</b></h3>
         <div class="text" style="font-size: 25px;">
-          <% unless @my_comment.content.empty? %>
+          <% unless @my_comment.nil? || @my_comment.empty? %>
             <%= @my_comment.content %></br>
           <% end %>
         </div>
