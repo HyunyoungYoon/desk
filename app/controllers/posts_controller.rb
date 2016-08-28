@@ -73,6 +73,18 @@ class PostsController < ApplicationController
     redirect_to :back
   end
 
+  def share_destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+
+    redirect_to :back
+  end
+  
+  def recent
+    @posts = Post.all
+  end
+  
+  
   private
   # params to make a new agenda
   def post_new_params

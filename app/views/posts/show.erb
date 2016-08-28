@@ -20,7 +20,7 @@
       </div>
       <div class="col s7">
         <h4 style="text-align:center;"><%= @post.title %>
-          <p><a href="<%= @post.url %>"><%= @post.abstract %></a></p>
+        <p><a href="<%= @post.url %>"><%= @post.abstract %></a></p>
         </h4>
       </div>
     </div><br>
@@ -40,7 +40,7 @@
         <!-- My comment -->
         <h3 style="margin-left:2px; margin-top:2px;"><b>My Comment</b></h3>
         <div class="text" style="font-size: 25px;">
-          <% unless @my_comment.content.empty? %>
+          <% unless @my_comment.nil? || @my_comment.empty? %>
             <%= @my_comment.content %></br>
           <% end %>
         </div>
@@ -54,7 +54,7 @@
           <i class="pin"></i>
           <div class="answer left">
             <div class="text">
-              <%= c.content %></br>              
+              <%= c.content %> <%= link_to "DELELTE", posts_share_destroy_path(c.id), method: 'delete' %></br>
             </div>
           </div>
         </div><br>
@@ -81,13 +81,12 @@
       <% end %>    
     </div>
 
-  </div>
-  <div class="col hide-on-small-only m3 l2">
-    <%= render partial: "recommend", :locals => { :p => @post } %>
+    <div class="col hide-on-small-only m3 l2">
+      <%= render partial: "recommend", :locals => { :p => @post } %>
+    </div>
   </div>
 </div>
 
-
-<script>
-  $('#recommend').pushpin({ top:$('#recommend').offset().top });
-</script>
+  <script>
+$('#recommend').pushpin({ top:$('#recommend').offset().top });
+  </script>

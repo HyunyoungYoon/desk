@@ -9,4 +9,5 @@ class MydeskController < ApplicationController
   def follow
     @agendas = current_user.agendas
   end
+
 end

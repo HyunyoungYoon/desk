@@ -13,10 +13,15 @@
       <div class="nav-wrapper grey lighten-5">
         <a href="/home/new" class="brand-logo black-text" style="margin-left:120px;"><b>DESK</b></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down" style="margin-right:200px;">
-          <li class="<% if params[:controller] == 'home' %>active<% end %>"><a href="/home/index" class="black-text"><b>Home</b></a></li>
+          <li class="<% if params[:controller] == 'posts' %>active<% end %>"><a href="/home/new" class="black-text"><b>Home</b></a></li>
           <% if user_signed_in? %>
             <!-- Dropdown Trigger -->
-          <li class="<% if params[:controller] == 'mydesk' %>active<% end %>"><a class="dropdown-button black-text" href="/mydesk/index" data-activates="dropdown1"><b>My DESK</b><i class="material-icons right">arrow_drop_down</i></a></li>
+          <li class="<% if params[:controller] == 'agendas' %>active<% end %>">
+            <a class="dropdown-button black-text" href="/mydesk/index" data-activates="dropdown1">
+              <b>My DESK</b>
+              <i class="material-icons right">arrow_drop_down</i>
+            </a>
+          </li>
           <% end %>
           <li class="<% if params[:controller] == 'discover' %>active<% end %>"><a href="/discover/index" class="black-text"><b>Discover</b></a></li>
           <li><input name="search" placeholder="기사 검색하기!"><i class="material-search"></i></li>
@@ -33,7 +38,7 @@
 
       <!-- Navbar Dropdown Structure -->
       <ul id="dropdown1" class="dropdown-content">
-        <li><a href="/home/index" class="black-text">최신 순서</a></li>
+        <li><a href="/mydesk/recent" class="black-text">최신 순서</a></li>
         <li><a href="/agendas" class="black-text">Agenda순서</a></li>
         <li><a href="#" class="black-text">내가 follow하는 Agenda</a></li>
         <li><a href="#" class="black-text">하나 더?</a></li>
