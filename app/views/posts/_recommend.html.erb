@@ -6,6 +6,8 @@
     <!--아니면 기사 url로 가는게 좋을까?-->
     <a href="<%= p.url %>" target="_blank">
       <img src="<%= p.pic %>" style="height:11em; width:12em; margin:auto;">
+    <!--<a href="<%#= p.url %>">-->
+    <!--  <img src="<%#= asset_path("#{p.pic}") %>" style="height:11em; width:12em; margin:auto;">-->
       <p style="text-align:center;"><b><%= p.title %></b></p>
     </a><hr>  
   <% end %>

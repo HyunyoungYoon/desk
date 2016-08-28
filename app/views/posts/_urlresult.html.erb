@@ -2,5 +2,5 @@
   <li><b>제목 : <%= p.title %> </b></li>
   <li><b>요약 : <%= p.abstract %> </b></li>
   <hr>
-  <img src= "<%= p.pic %>" style="height=100%; width=100%;">
+  <img src= "<%= asset_path("#{p.pic}") %>" style="height=100%; width=100%;">
 <% end %>
