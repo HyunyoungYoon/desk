@@ -1,15 +1,19 @@
+<!--posts curation-->
+
 <div class="card recommend grey lighten-5" style="padding:1em;">
   <h5 style="text-align:center; margin-top:1em;"><b>당신을 위한<br>포스트 추천</b></h5><hr>
-  <% p.agenda.related_posts.each do |p| %>
-    <!--post#show로 가는 게 좋을까-->
-    <!--<a href="/agendas/<%#= p.agenda_id %>/posts/<%#= p.id %>">-->
-    <!--아니면 기사 url로 가는게 좋을까?-->
-    <a href="<%= p.url %>" target="_blank">
-      <img src="<%= p.pic %>" style="height:11em; width:12em; margin:auto;">
-    <!--<a href="<%#= p.url %>">-->
-    <!--  <img src="<%#= asset_path("#{p.pic}") %>" style="height:11em; width:12em; margin:auto;">-->
-      <p style="text-align:center;"><b><%= p.title %></b></p>
-    </a><hr>  
+  <% if @agenda.related_posts %>
+    <% @agenda.related_posts.each do |p| %>
+      <!--post#show로 가는 게 좋을까-->
+      <!--<a href="/agendas/<%#= p.agenda_id %>/posts/<%#= p.id %>">-->
+      <!--아니면 기사 url로 가는게 좋을까?-->
+      <a href="<%= p.url %>" target="_blank">
+        <img src="<%= p.pic %>" style="height:11em; width:12em; margin:auto;">
+      <!--<a href="<%#= p.url %>">-->
+      <!--  <img src="<%#= asset_path("#{p.pic}") %>" style="height:11em; width:12em; margin:auto;">-->
+        <p style="text-align:center;"><b><%= p.title %></b></p>
+      </a><hr>  
+    <% end %>
   <% end %>
   <a class="waves-effect waves-teal btn-flat modal-trigger" href="#newagenda"><b>새로운 어젠다 만들기</b></a>
 </div>

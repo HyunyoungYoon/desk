@@ -2,7 +2,8 @@ require 'scrapifier'
 
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @agenda = Agenda.find(params[:agenda_id])
+    @posts = @agenda.posts.all
   end
   def show
     @post = Post.find(params[:id])

@@ -23,9 +23,11 @@ class Agenda < ActiveRecord::Base
   def related_posts
     posts = Array.new
     base = self.posts.pluck(:url)
-    self.similar.each do |a|
-      a.posts.where.not('url IN (?)',base).all.each do |p|
-        posts << p
+    if self.similar
+      self.similar.each do |a|
+        a.posts.where.not('url IN (?)',base).all.each do |p|
+          posts << p
+        end
       end
     end
     return posts.uniq

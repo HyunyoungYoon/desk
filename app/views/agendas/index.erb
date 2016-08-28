@@ -1,217 +1,36 @@
-<!--my agenda-->
-<p><b>my agenda</b></p>
-<%= @agendas.all.each do |a| %>
-  <%= a.name %></br>
-  <%= a.color %>
-<% end %>
 
-<!--following agenda-->
-<p><b>agenda current user is following</b></p>
-
-<% @posts.each do |p| %>
-  <%= p.url %>
-  <%#= link_to "자세히보기", agenda_post_path(agenda_id: p.agenda_id, id: p.id)%>
-  <br><br>
-<% end %>
-
-<div class="row">
-  <div class="col s12 m9 l8 offset-l1">
-    <div class="row newsplatepostit grey lighten-5">
-      <i class="pin"></i>
-      <p style="font-size: 20px; margin-left:1em;"><b>최신 순으로 정리된 기사들</b></p>
-      <div class="col s12">
-        <div class="row">
-          <div class="card col s3 agenda">
-            <!-- Agenda에 따라 색깔과 링크를 다르게 적용해야 하는 부분 -->
-            <div>
-              <div class="triangle" style="float: right;"></div>
-              <a class="waves-effect waves-light btn hiders" id="agenda1" href="/mydesk/agenda1" style="width:100%; background-color:#81d4fa; display:none;">전기자동차</a>
-            </div>
-            <div class="card-image waves-effect waves-block waves-light">
-              <a href="/mydesk/news2">
-                <img class="activator" src="/img/mydesk/post/example2.jpeg" height="200px" width="300px">
-              </a>
-            </div><br>
-            <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4">엘론머스크<i class="material-icons right">more_vert</i></span>
-              <p><a href="http://www.irobotnews.com/news/articleView.html?idxno=8213" style="color:black;">테슬라, 그 이후는?</a></p>
-            </div>
-            <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">엘론머스크다!<i class="material-icons right">close</i></span>
-              <p>음.. 테슬라와 솔라시티, 스페이스X에 이어 다음으로 엘론머스크가 진출할 사업은 아마 로봇이 아닐까싶다.</p>
-            </div>
-          </div>
-          <div class="card col s3 agenda">
-            <!-- Agenda에 따라 색깔과 링크를 다르게 적용해야 하는 부분 -->
-            <div>
-              <div class="triangle2" style="float: right;"></div>
-              <a class="waves-effect waves-light btn hiders2" id="agenda2" style="width:100%; background-color:yellow; display:none; color:black;">바나나나나~</a>
-            </div>
-            <div class="card-image waves-effect waves-block waves-light">
-              <img class="activator" src="/img/mydesk/post/example3.jpg" height="200px" width="300px">
-            </div><br>
-            <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4">애니메이션<i class="material-icons right">more_vert</i></span>
-              <p><a href="http://www.sedaily.com/Photo/NewsView/1KYYATYBWC" style="color:black;">픽사로 인해 시작된..</a></p>
-            </div>
-            <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">미니언즈 발견!!<i class="material-icons right">close</i></span>
-              <p>미니언들, 그들은 과연 어디서 왔다가 어디로 가는것일까?</p>
-            </div>
-          </div>
-          <div class="card col s3 agenda">
-            <!-- Agenda에 따라 색깔과 링크를 다르게 적용해야 하는 부분 -->
-            <div>
-              <div class="triangle3" style="float: right;"></div>
-              <a class="waves-effect waves-light btn hiders3" id="agenda3" style="width:100%; display:none; background-color:red;">포켓몬고 열풍!</a>
-            </div>
-            <div class="card-image waves-effect waves-block waves-light">
-              <img class="activator" src="/img/mydesk/post/example1.png" height="200px" width="300px">
-            </div><br>
-            <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4">피카츄가 한국에!!<i class="material-icons right">more_vert</i></span>
-              <p><a href="http://www.visualdive.com/2016/07/%ED%98%84%EC%8B%A4%EC%97%90%EC%84%9C-%EB%A7%8C%EB%82%98%EB%8A%94-%ED%94%BC%EC%B9%B4%EC%B8%84-%ED%8F%AC%EC%BC%93%EB%AA%AC%EA%B3%A0-%E7%BE%8E%EC%84%9C-%ED%8F%AD%EB%B0%9C/" style="color:black;">한국에서도 포켓몬고..</a></p>
-            </div>
-            <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">피카츄가 한국에!!<i class="material-icons right">close</i></span>
-              <p>피카츄는 귀엽다 짱이다</p>
-            </div>
-          </div>
-          <div class="card col s3 agenda">
-            <!-- Agenda에 따라 색깔과 링크를 다르게 적용해야 하는 부분 -->
-            <div>
-              <div class="triangle3" style="float: right;"></div>
-              <a class="waves-effect waves-light btn hiders3" id="agenda3" style="width:100%; display:none; background-color:red;">포켓몬고!</a>
-            </div>
-            <div class="card-image waves-effect waves-block waves-light">
-              <img class="activator" src="/img/mydesk/post/example1.png" height="200px" width="300px">
-            </div><br>
-            <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4">피카츄가 한국에!!<i class="material-icons right">more_vert</i></span>
-              <p><a href="http://www.visualdive.com/2016/07/%ED%98%84%EC%8B%A4%EC%97%90%EC%84%9C-%EB%A7%8C%EB%82%98%EB%8A%94-%ED%94%BC%EC%B9%B4%EC%B8%84-%ED%8F%AC%EC%BC%93%EB%AA%AC%EA%B3%A0-%E7%BE%8E%EC%84%9C-%ED%8F%AD%EB%B0%9C/" style="color:black;">피카츄라이츄, 포켓몬고..</a></p>
-            </div>
-            <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">피카츄가 한국에!!<i class="material-icons right">close</i></span>
-              <p>피카츄는 귀엽다 짱이다</p>
-            </div>
-          </div>
-    <!-- 예시를 8개 이상 들기 위하여 추가한 부분 -->
-        </div><hr><br>
-        <div class="row">
-          <div class="card col s3 agenda">
-            <!-- Agenda에 따라 색깔과 링크를 다르게 적용해야 하는 부분 -->
-            <div>
-              <div class="triangle4" style="float: right;"></div>
-              <a class="waves-effect waves-light btn hiders4" id="agenda4" style="width:100%; display:none; background-color:green;">Olympic~!</a>
-            </div>
-            <div class="card-image waves-effect waves-block waves-light">
-              <a href="/mydesk/news1">
-                <img class="activator" src="/img/mydesk/post/example5.png" height="200px" width="300px">
-              </a>
-            </div><br>
-            <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4">리우올림픽!!<i class="material-icons right">more_vert</i></span>
-              <p><a href="http://www.visualdive.com/2016/07/%ED%98%84%EC%8B%A4%EC%97%90%EC%84%9C-%EB%A7%8C%EB%82%98%EB%8A%94-%ED%94%BC%EC%B9%B4%EC%B8%84-%ED%8F%AC%EC%BC%93%EB%AA%AC%EA%B3%A0-%E7%BE%8E%EC%84%9C-%ED%8F%AD%EB%B0%9C/" style="color:black;">리우에서 올림픽이..</a></p>
-            </div>
-            <!-- 그 기사에 대한 Author의 댓글(comment)가 담겨있는 부분 : 어떻게 보여주는 것이 좋을지 고민해보기
-              <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">리우올림픽!!<i class="material-icons right">close</i></span>
-                <p>올림픽이 열린다고 한다.</p>
-              </div>
-            -->
-          </div>
-          <div class="card col s3 agenda">
-            <!-- Agenda에 따라 색깔과 링크를 다르게 적용해야 하는 부분 -->
-            <div>
-              <div class="triangle2" style="float: right;"></div>
-              <a class="waves-effect waves-light btn hiders2" id="agenda2" style="width:100%; display:none; background-color:yellow; color:black;">바나나나나~</a>
-            </div>
-            <div class="card-image waves-effect waves-block waves-light">
-              <img class="activator" src="/img/mydesk/post/example3.jpg" height="200px" width="300px">
-            </div><br>
-            <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4">애니메이션과 사회<i class="material-icons right">more_vert</i></span>
-              <p><a href="http://www.sedaily.com/Photo/NewsView/1KYYATYBWC" style="color:black;">미니언즈로 인해 시작된..</a></p>
-            </div>
-            <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">애니메이션과 사회<i class="material-icons right">close</i></span>
-              <p>미니언들, 그들은 과연 어디서 왔다가 어디로 가는것일까?</p>
-            </div>
-          </div>
-          <div class="card col s3 agenda">
-            <!-- Agenda에 따라 색깔과 링크를 다르게 적용해야 하는 부분 -->
-            <div>
-              <div class="triangle5" style="float: right;"></div>
-              <a class="waves-effect waves-light btn hiders5" style="width:100%; display:none; background-color:grey;">Thaad</a>
-            </div>
-            <div class="card-image waves-effect waves-block waves-light">
-              <img class="activator" src="/img/mydesk/post/example7.jpeg" height="200px" width="300px">
-            </div><br>
-            <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4">Thaad배치<i class="material-icons right">more_vert</i></span>
-              <p><a href="http://www.visualdive.com/2016/07/%ED%98%84%EC%8B%A4%EC%97%90%EC%84%9C-%EB%A7%8C%EB%82%98%EB%8A%94-%ED%94%BC%EC%B9%B4%EC%B8%84-%ED%8F%AC%EC%BC%93%EB%AA%AC%EA%B3%A0-%E7%BE%8E%EC%84%9C-%ED%8F%AD%EB%B0%9C/" style="color:black;">사드배치에 따른..</a></p>
-            </div>
-            <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">Thaad배치<i class="material-icons right">close</i></span>
-              <p>Thaad배치에 따른 사람들의 서로다른관점</p>
-            </div>
-          </div>
-          <div class="card col s3 agenda">
-            <!-- Agenda에 따라 색깔과 링크를 다르게 적용해야 하는 부분 -->
-            <div>
-              <div class="triangle6" style="float: right;"></div>
-              <a class="waves-effect waves-light btn hiders6" id="agenda6" style="width:100%; display:none; background-color:blue;">미국 대선</a>
-            </div>
-            <div class="card-image waves-effect waves-block waves-light">
-              <img class="activator" src="/img/mydesk/post/example6.jpg" height="200px" width="300px">
-            </div><br>
-            <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4">힐러리 vs 트럼프<i class="material-icons right">more_vert</i></span>
-              <p><a href="http://www.irobotnews.com/news/articleView.html?idxno=8213" style="color:black;">과연 그 승자는?</a></p>
-            </div>
-            <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">미국 대선<i class="material-icons right">close</i></span>
-              <p>미국 대선에서 승리할 사람과 그에 따른 국제 정세 변화는 어떻게 될까?</p>
-            </div>
-          </div>
-        </div>
-      </div>
+<div class="myagendabackgroundimg">
+  <div class="row">
+    <h5 style="margin-top: .1em; background:white; padding:.5em;"><a class="btn-floating waves-effect waves-light black" href="#"><i class="material-icons">swap_calls</i></a>&nbsp;&nbsp;<b>Agenda 순으로 정리된 기사들</b></h5>
+  </div>
+  <div class="row">
+    <div class="col s12 myagenda">
+      <!--agenda buttons-->
+      <% @agendas.each do |a| %>
+        <div class="agenda">
+          <a class="waves-effect waves-light btn modal-trigger" id="agenda1" href="#modal_agenda<%= a.id%>" style="height:40px; margin-left:<%= Random.rand(80) %>%; margin-top:<%= Random.rand(70) %>;">
+            <b><%= a.name %></b>
+          </a>
+        </div><br>
+      <% end %>
     </div>
   </div>
-  <div class="col hide-on-small-only m3 l2">
-    <%= render partial: "recommend" %>
-  </div>
 </div>
+<!-- Modal Structure -->
+<% @agendas.each do |a| %>
+  <div id="modal_agenda<%= a.id %>" class="modal">
+    <div class="modal-content">
+      <h4 style="text-align:center;"><%= a.name %></h4><hr>
+      <h6><a href="<%= agenda_posts_path(a.id) %>"><b>들어가기</b></a></h6>
+    </div>
+  </div>
+<% end %>
 
 
-
+<!-- 모달 불러오는 jquery script -->
 <script>
-  $(document).ready(function(){
-    $(".triangle").click(function(){
-      $('.triangle').hide();
-      $('.hiders').slideToggle();
-    });
-    $(".triangle2").click(function(){
-      $('.triangle2').hide();
-      $('.hiders2').slideToggle();
-    });
-    $(".triangle3").click(function(){
-      $('.triangle3').hide();
-      $('.hiders3').slideToggle();
-    });
-    $(".triangle4").click(function(){
-      $('.triangle4').hide();
-      $('.hiders4').slideToggle();
-    });
-    $(".triangle5").click(function(){
-      $('.triangle5').hide();
-      $('.hiders5').slideToggle();
-    });
-    $(".triangle6").click(function(){
-      $('.triangle6').hide();
-      $('.hiders6').slideToggle();
-    });
-
-    $('.recommend').pushpin({ top: $('.recommend').offset().top });
-  });
+$(document).ready(function(){
+  // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+  $('.modal-trigger').leanModal();
+});
 </script>
