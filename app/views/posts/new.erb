@@ -1,6 +1,35 @@
+<body id="front-page">
+	<!-- Page Wrapper -->
+	<div id="page">
+    <!-- Main Content -->
+		<div class="content-wrapper">
+			<!-- Main Slider -->
+			<div class="main-slider">
+				<ul class="items clean-list">
+				  <!--최근 기사들-->
+				  <% @posts.take(4).each do |p| %>
+  					<li class="item gallery-cell">
+  						<img width="840" height="542" src="<%= p.pic %>" alt="slider item cover" />
+  						<div class="slide-components">
+  							<h3 class="title slide-component first-row"><a href="#"><%= p.title %></a></h3>
+  							<hr class="slide-component second-row" />
+  							<a href="#" class="link slide-component third-row">Read article</a>
+  							<hr class="slide-component second-row" />
+  							<a href="#" class="link slide-component third-row">Read comments</a>
+  						</div>
+  					</li>
+					<% end %>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+
 <div class="container">
   <div class="row urlpostit">
     <!-- 입력하는 box가 있는 부분 : home.scss에 contextpostit CSS를 따로 적용시켜놓았다 -->
+
     <%= form_for @post do |f| %>
       <div class="row" style="margin-left:1em;">
         <%#= form_tag("/posts/urlinput", method: "post", id: 'urlinput') do %>
@@ -13,6 +42,7 @@
             <%= button_tag "제출하기", type: "button", class: "urlsubmit btn waves-effect waves-light pink lighten-2", style: "margin-top:2em;" %>
           </div>
         <%# end %>
+
       </div>
       <!-- 처음에는 숨겨져있다가, 코드 맨 아래의 CHANGE jquery에 의해 입력상에 변화가 있게되면 contextpostit으로 바뀌게 된다 -->
       <div class="row">
