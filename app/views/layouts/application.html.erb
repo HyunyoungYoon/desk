@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Desk</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">    
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    <!-- Style CSS & Google Fonts -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic%7CMontserrat:400,700" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/icomoon.css" />
+    <link rel="stylesheet" href="css/owl.css" />
+    <link rel="stylesheet" href="css/screen.css" />
+  
+  </head>
+  <body>
+  <div id="background">
+    
+    		<header class="style-2">
+
+			<div class="large-container">
+			  <a href="/home/new" class="brand-logo" style="margin-left:120px;"><b>DESK</b></a>
+				<div class="row">
+					<div class="col-xs-24">
+						<span class="mobile-nav-toggle no-select"></span>
+						<nav>
+							<ul>
+									<li class="<% if params[:controller] == 'posts' %>active<% end %>"><a href="/home/new">Home</a></li>
+								  <% if user_signed_in? %>
+                  <!-- Dropdown Trigger -->
+                      <li class="<% if params[:controller] == 'agendas' %>active<% end %>" href="/mydesk/index">My DESK</li>
+                        <% end %>
+						      			<ul>
+                          <li><a href="/mydesk/recent">최신 순서</a></li>
+                          <li><a href="/agendas">Agenda순서</a></li>
+                          <li><a href="#">내가 follow하는 Agenda</a></li>
+                          <li><a href="#">하나 더?</a></li>
+                        </ul>
+								 <li class="<% if params[:controller] == 'discover' %>active<% end %>"><a href="/discover/index" class="black-text"><b>Discover</b></a></li>
+								<li>
+								  <input type="text" class="search-input check-value" name="global-search-text" placeholder="기사 검색하기!" /><i class="material-search"></i></li>
+								<% if user_signed_in? %>
+                  <li><%= link_to '로그아웃', destroy_user_session_path, method: 'DELETE', class:"black-text", style: "font-weight:bold;" %></li>
+                  <li><%= link_to '회원정보 수정', edit_user_registration_path, class: "black-text", style: "font-weight:bold;" %></li>
+                  <% else %>
+                  <li><%= link_to '회원가입', new_user_registration_path, class: "black-text", style: "float:right; font-weight:bold;" %></li>
+                  <li><%= link_to '로그인하기', new_user_session_path, class: "black-text", style: "float:right; font-weight:bold;" %></li>
+                <% end %>
+						</nav>
+
+						<form class="global-search-form">
+							<span class="form-toggle">
+								<i class="fa fa-search"></i>
+							</span>
+							<input type="text" class="search-input check-value" name="global-search-text" placeholder="Search" />
+							<button class="search-submit"><i class="fa fa-search"></i></button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</header>
+		
+      </div>
+    </nav>
+
+      <!-- Navbar Dropdown Structure -->
+      
+
+    <%= yield %>
+
+    <footer name="footer">
+      <div class="nav-wrapper grey lighten-5" style="height:3em;">
+        <ul id="nav-mobile" class="right hide-on-med-and-down" style="margin-right:200px;">
+          <b>© 2016 copyright.
+          윤현영, 신동민, 김근영, 김경도</b>
+        </ul>
+      </div>
+    </footer>
+
+
+  </div>
+
+    <script>
+      $(".dropdown-button").dropdown();
+
+      // 기존 어젠다, 신규 어젠다 선택 모달 띄우기
+      $(document).ready(function() {
+        $('.modal-trigger').leanModal();
+      });
+    </script>
+
+  </body>
+</html>
