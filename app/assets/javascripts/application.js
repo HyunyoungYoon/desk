@@ -15,6 +15,12 @@
 //= require jquery_ujs
 //= require materialize
 //= require_tree .
+//= require owl
+//= require flickity
+//= require imagesloaded
+//= require isotope
+//= require options
+
 //= require turbolinks
 //
 $.turbo.use('turbolinks:load');
