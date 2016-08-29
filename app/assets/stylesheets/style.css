@@ -14,6 +14,9 @@ a {
     color: #f34343;
     text-decoration: none;
 }
+a:link {
+    text-decoration: none;
+}
 pre {
     border: 1px solid #fd9898;
     border-radius: 0px;
@@ -21,7 +24,7 @@ pre {
 }
 a:hover {
     color: #f34343;
-    text-decoration: underline;
+    text-decoration: none;
 }
 .clear {
     clear: both;

@@ -19,7 +19,6 @@
   <div id="background">
     
     <header class="style-2">
-
 			<div class="large-container">
 			  <a href="/home/new" class="brand-logo" style="margin-left:120px;"><b>DESK</b></a>
 				<div class="row">
@@ -27,21 +26,21 @@
 						<span class="mobile-nav-toggle no-select"></span>
 						<nav>
 							<ul>
-							  	<li class="<% if params[:controller] == 'posts' %>active<% end %>"><a href="/home/new">Home</a></li>
+							  <li class="current-menu-item">
+							  	<li class="<% if params[:controller] == 'posts' %>active<% end %>">
+							  	  <a href="/home/new"><b>Home</b></a></li>
 							  <% if user_signed_in? %>
-                  <!-- Dropdown Trigger -->
-                    <li class="<% if params[:controller] == 'agendas' %>active<% end %>" href="/mydesk/index">My DESK</li>
-                
-						      			<ul>
-                          <li><a href="/mydesk/recent">최신 순서</a></li>
+                    <li class="<% if params[:controller] == 'agendas' %>active<% end %>">
+                      <a href="/mydesk/index"><b>My DESK</b></a>
+                <% end %>
+                				<ul>
+                          <li><a href="/mydesk/recent"><b>최신 순서</b></a></li>
                           <li><a href="/agendas">Agenda순서</a></li>
                           <li><a href="#">내가 follow하는 Agenda</a></li>
                           <li><a href="#">하나 더?</a></li>
                         </ul>
-                <% end %>
+                     </li>
 								 <li class="<% if params[:controller] == 'discover' %>active<% end %>"><a href="/discover/index" class="black-text"><b>Discover</b></a></li>
-								<li>
-								  <input type="text" class="search-input check-value" name="global-search-text" placeholder="기사 검색하기!" /><i class="material-search"></i></li>
 								<% if user_signed_in? %>
                   <li><%= link_to '로그아웃', destroy_user_session_path, method: 'DELETE', class:"black-text", style: "font-weight:bold;" %></li>
                   <li><%= link_to '회원정보 수정', edit_user_registration_path, class: "black-text", style: "font-weight:bold;" %></li>
@@ -49,13 +48,16 @@
                   <li><%= link_to '회원가입', new_user_registration_path, class: "black-text", style: "float:right; font-weight:bold;" %></li>
                   <li><%= link_to '로그인하기', new_user_session_path, class: "black-text", style: "float:right; font-weight:bold;" %></li>
                 <% end %>
+                </li>
+              </ul>
+
 						</nav>
 
 						<form class="global-search-form">
 							<span class="form-toggle">
 								<i class="fa fa-search"></i>
 							</span>
-							<input type="text" class="search-input check-value" name="global-search-text" placeholder="Search" />
+							<input type="text" class="search-input check-value" name="global-search-text" placeholder="기사 검색하기!" />
 							<button class="search-submit"><i class="fa fa-search"></i></button>
 						</form>
 					</div>
