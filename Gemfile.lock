@@ -132,6 +132,9 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    seed_dump (3.2.4)
+      activerecord (>= 4)
+      activesupport (>= 4)
     spring (1.7.2)
     sprockets (3.7.0)
       concurrent-ruby (~> 1.0)
@@ -173,6 +176,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   scrapifier
   sdoc (~> 0.4.0)
+  seed_dump
   spring
   sqlite3
   turbolinks

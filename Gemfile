@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'seed_dump'
 gem 'scrapifier'
 gem 'jquery-turbolinks'
 gem 'devise'

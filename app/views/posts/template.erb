@@ -1,91 +1,32 @@
-<!DOCTYPE html>
-<html>
+
+
 
 <body id="front-page">
 	<!-- Page Wrapper -->
-		<!-- Header -->
-
-
-		<!-- Main Content -->
+	<div id="page">
+    <!-- Main Content -->
 		<div class="content-wrapper">
-			<!-- Error Section -->
-			<section class="section error-section">
-				<div class="container">
-					<div class="section-header big">
-						<p>Oops, Page Not Found!</p>
-						<h2>Error 404</h2>
-						<p class="bottom">The page you are looking for does not exist. Please enter a valid URL or return home</p>
-					</div>
+			<!-- Main Slider -->
+			<div class="main-slider">
+				<ul class="items clean-list">
+				
+				  <!--최근 기사들-->
+				  <% @posts.take(4).each do |p| %>
+  					<li class="item gallery-cell">
+  						<img width="840" height="542" src="<%= p.pic %>" alt="slider item cover" />
+  						<div class="slide-components">
+  							<h3 class="title slide-component first-row"><a href="<%= p.url %>"><%= p.title %></a></h3>
+  							<hr class="slide-component second-row" />
+  							<a href="<%= p.url %>" class="link slide-component third-row">기사 보러 가기</a>
+  							<hr class="slide-component second-row" />
+  							<a href="<%= agenda_post_path(p.agenda_id, p.id) %>" class="link slide-component third-row">상세 보기</a>
+  						</div>
+  					</li>
+					<% end %>
 
-					<div class="btn-wrapper">
-						<a href="index.html" class="btn template-btn-2">Go home</a>
-					</div>
-				</div>
-			</section>
+				</ul>
+			</div>
 		</div>
-
-		<!-- Footer -->
-		<footer>
-			<div class="widgets">
-				<div class="widget widget_instagram_big">
-					<h5 class="widget-title">Instagram</h5>
-
-					<div class="instagram-feed instagram-carousel" data-instagram-items="12" data-instagram-tag="epilogfeed2"></div>
-				</div>
-
-				<div class="widget widget_social_big">
-					<div class="row row-fit">
-						<div class="col-xs-8">
-							<div class="widget-social-block">
-								<a href="#">
-									<span><i class="fa fa-twitter"></i><span class="text">Twitter (2200)</span></span>
-								</a>
-
-								<div class="cover">
-									<span><i class="fa fa-twitter"></i> Tweet</span>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-8">
-							<div class="widget-social-block">
-								<a href="#">
-									<span><i class="fa fa-facebook"></i><span class="text">Facebook (155)</span></span>
-								</a>
-
-								<div class="cover">
-									<span><i class="fa fa-facebook"></i> Like</span>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-8">
-							<div class="widget-social-block">
-								<a href="#">
-									<span><i class="fa fa-instagram"></i><span class="text">Instagram (890)</span></span>
-								</a>
-
-								<div class="cover">
-									<span><i class="fa fa-instagram"></i> Follow</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="copy-rights align-center">
-				<div class="container">
-					<p>Copyright Epilog. Design by <a href="https://www.teslathemes.com" target="blank">TeslaThemes</a></p>
-				</div>
-			</div>
-		</footer>
-
-		<a class="back-to-top-btn" href="#">
-			<i class="fa fa-angle-up btn template-btn-2"></i>
-		</a>
 	</div>
-
-
 </body>
-</html>
+

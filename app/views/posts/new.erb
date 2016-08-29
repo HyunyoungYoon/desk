@@ -106,9 +106,11 @@
           <hr>
             <div class="row center-align">
               <% for i in 1..3 do %>
-                <button type="submit" value="<%= i %>" id="agenda<%= i %>" class="btn waves-effect waves-light agenda_submit" style="height:40px;"><b><%= Agenda.find(i).name %></b>
-                <input type="hidden" value="<%= i %>" id="agenda_number"/>
-                <%#= f.text_field :agenda_id, :class=> "hidden", :value=>"#{i}", :style => "color:black; font-weight:bold;" %></button>
+              	<% if Agenda.count >= 3 %>
+	                <button type="submit" value="<%= i %>" id="agenda<%= i %>" class="btn waves-effect waves-light agenda_submit" style="height:40px;"><b><%= Agenda.find(i).name %></b>
+	                <input type="hidden" value="<%= i %>" id="agenda_number"/>
+	                <%#= f.text_field :agenda_id, :class=> "hidden", :value=>"#{i}", :style => "color:black; font-weight:bold;" %></button>
+              	<% end %>
               <% end %>
             </div>
           <div class="divider"></div>
@@ -233,3 +235,4 @@ $('.agenda_make').click(function(){
 });
 
 </script>
+
