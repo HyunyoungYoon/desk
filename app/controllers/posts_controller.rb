@@ -15,6 +15,7 @@ class PostsController < ApplicationController
     
 
     @allurl = Url.all.order("created_at DESC").limit(1)
+    redirect_to "/new"
   end
   
   def show
