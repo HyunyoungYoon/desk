@@ -1,32 +1,3 @@
-<body id="front-page">
-	<!-- Page Wrapper -->
-	<div id="page">
-    <!-- Main Content -->
-		<div class="content-wrapper">
-			<!-- Main Slider -->
-			<div class="main-slider">
-				<ul class="items clean-list">
-				
-				  <!--최근 기사들-->
-				  <% @posts.take(4).each do |p| %>
-  					<li class="item gallery-cell">
-  						<img width="840" height="542" src="<%= p.pic %>" alt="slider item cover" />
-  						<div class="slide-components">
-  							<h3 class="title slide-component first-row"><a href="<%= p.url %>"><%= p.title %></a></h3>
-  							<hr class="slide-component second-row" />
-  							<a href="<%= p.url %>" class="link slide-component third-row">기사 보러 가기</a>
-  							<hr class="slide-component second-row" />
-  							<a href="<%= agenda_post_path(p.agenda_id, p.id) %>" class="link slide-component third-row">상세 보기</a>
-  						</div>
-  					</li>
-					<% end %>
-
-				</ul>
-			</div>
-		</div>
-	</div>
-</body>
-
 <div class="container">
   <div class="row urlpostit">
     <!-- 입력하는 box가 있는 부분 : home.scss에 contextpostit CSS를 따로 적용시켜놓았다 -->
@@ -135,9 +106,11 @@
           <hr>
             <div class="row center-align">
               <% for i in 1..3 do %>
-                <button type="submit" value="<%= i %>" id="agenda<%= i %>" class="btn waves-effect waves-light agenda_submit" style="height:40px;"><b><%= Agenda.find(i).name %></b>
-                <input type="hidden" value="<%= i %>" id="agenda_number"/>
-                <%#= f.text_field :agenda_id, :class=> "hidden", :value=>"#{i}", :style => "color:black; font-weight:bold;" %></button>
+              	<% if Agenda.count >= 3 %>
+	                <button type="submit" value="<%= i %>" id="agenda<%= i %>" class="btn waves-effect waves-light agenda_submit" style="height:40px;"><b><%= Agenda.find(i).name %></b>
+	                <input type="hidden" value="<%= i %>" id="agenda_number"/>
+	                <%#= f.text_field :agenda_id, :class=> "hidden", :value=>"#{i}", :style => "color:black; font-weight:bold;" %></button>
+              	<% end %>
               <% end %>
             </div>
           <div class="divider"></div>
@@ -262,3 +235,4 @@ $('.agenda_make').click(function(){
 });
 
 </script>
+
