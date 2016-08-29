@@ -1,23 +1,25 @@
 <!--post card-->
-  <% if user_signed_in? %>
-    <% @posts.each do |p| %>
-      <div class="card col s4">
-        <div class="card-image waves-effect waves-block waves-light">
-          <a href="/agendas/<%= p.agenda_id %>/posts/<%= p.id %>">
-            <img class="activator" src="<%= p.pic %>" height="300px" width="300px">
-          </a>
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4"><a href="<%= p.url %>"><%= p.title %></a>
-          <i class="material-icons right">more_vert</i></span>
-          <p><%= p.my_comment(current_user).content if p.my_comment(current_user) %></p>
-        </div>
-  
-      <!--그 기사에 대한 Author의 댓글(comment)가 담겨있는 부분 : 어떻게 보여주는 것이 좋을지 고민해보기-->
-      <!--  <div class="card-reveal">-->
-      <!--    <span class="card-title grey-text text-darken-4">엘론머스크다!<i class="material-icons right">close</i></span>-->
-      <!--    <p>음.. 테슬라와 솔라시티, 스페이스X에 이어 다음으로 엘론머스크가 진출할 사업은 아마 로봇이 아닐까싶다.</p>-->
-      <!--  </div>-->
-      </div>
-    <% end %>
-  <% end %>
+<div class="card col s4">
+  <div>
+    <div class="triangle3" style="float: right;"></div>
+    <a class="waves-effect waves-light btn hiders3" id="agenda3" style="width:100%; display:none; background-color:red;">
+      <%= Agenda.find(p.agenda_id).name %> 
+    </a>
+  </div>
+  <div class="card-image waves-effect waves-block waves-light">
+    <a href="/agendas/<%= p.agenda_id %>/posts/<%= p.id %>">
+      <img class="activator" src="<%= p.pic %>" height="300px" width="300px">
+    </a>
+  </div>
+  <div class="card-content">
+    <span class="card-title activator grey-text text-darken-4"><a href="<%= p.url %>"><%= p.title %></a>
+    <i class="material-icons right">more_vert</i></span>
+    <p><%= p.my_comment(current_user).content if p.my_comment(current_user) %></p>
+  </div>
+
+  <!--그 기사에 대한 Author의 댓글(comment)가 담겨있는 부분 : 어떻게 보여주는 것이 좋을지 고민해보기-->
+  <!--  <div class="card-reveal">-->
+  <!--    <span class="card-title grey-text text-darken-4">엘론머스크다!<i class="material-icons right">close</i></span>-->
+  <!--    <p>음.. 테슬라와 솔라시티, 스페이스X에 이어 다음으로 엘론머스크가 진출할 사업은 아마 로봇이 아닐까싶다.</p>-->
+  <!--  </div>-->
+</div>

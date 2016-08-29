@@ -86,7 +86,11 @@
   <!--posts div-->
   <div class="row unreadpostit"><br>
     <p style="font-size: 20px; margin-left:1em;"><b><i class="material-icons">youtube_searched_for</i>&nbsp;아직 읽지 않은 기사들</b></p>
-    <%= render partial: "postcard" %>  
+    <% if user_signed_in? %>
+      <% @posts.each do |p| %>
+        <%= render partial: "postcard", locals: {p: p} %>
+      <% end %>
+    <% end %>
   </div>
 </div>
 
