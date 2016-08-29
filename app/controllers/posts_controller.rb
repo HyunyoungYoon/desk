@@ -85,6 +85,8 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
   
+  def template
+  end                                              
   
   private
   # params to make a new agenda

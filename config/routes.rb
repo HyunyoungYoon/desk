@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   resources :comments
   
   get 'mydesk/recent' => 'posts#recent'
+  get 'mydesk/template' => 'posts#template'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
