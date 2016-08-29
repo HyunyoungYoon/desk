@@ -1,0 +1,43 @@
+<div class="container">
+  <!--posts div-->
+  <div class="row unreadpostit"><br>
+    <p style="font-size: 20px; margin-left:1em;"><b><i class="material-icons">youtube_searched_for</i>&nbsp;아직 읽지 않은 기사들</b></p>
+    <% if user_signed_in? %>
+      <% @posts.each do |p| %>
+        <%= render partial: "postcard", locals: {p: p} %> 
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+
+<script>
+  $(document).ready(function(){
+    $(".triangle").click(function(){
+      $('.triangle').hide();
+      $('.hiders').slideToggle();
+    });
+    $(".triangle2").click(function(){
+      $('.triangle2').hide();
+      $('.hiders2').slideToggle();
+    });
+    $(".triangle3").click(function(){
+      $('.triangle3').hide();
+      $('.hiders3').slideToggle();
+    });
+    $(".triangle4").click(function(){
+      $('.triangle4').hide();
+      $('.hiders4').slideToggle();
+    });
+    $(".triangle5").click(function(){
+      $('.triangle5').hide();
+      $('.hiders5').slideToggle();
+    });
+    $(".triangle6").click(function(){
+      $('.triangle6').hide();
+      $('.hiders6').slideToggle();
+    });
+
+    $('.recommend').pushpin({ top: $('.recommend').offset().top });
+  });
+</script>

@@ -1,5 +1,6 @@
 class MydeskController < ApplicationController
   def index
+    @posts = Post.all
   end
   def agenda
     @agendas = Agenda.all
@@ -8,4 +9,5 @@ class MydeskController < ApplicationController
   def follow
     @agendas = current_user.agendas
   end
+
 end

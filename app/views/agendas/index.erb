@@ -1,10 +1,36 @@
-<!--my agenda-->
-<p><b>my agenda</b></p>
-<%= @my_agendas.all.each do |a| %>
-  <%= a.name %></br>
-  <%= a.color %>
+
+<div class="myagendabackgroundimg">
+  <div class="row">
+    <h5 style="margin-top: .1em; background:white; padding:.5em;"><a class="btn-floating waves-effect waves-light black" href="#"><i class="material-icons">swap_calls</i></a>&nbsp;&nbsp;<b>Agenda 순으로 정리된 기사들</b></h5>
+  </div>
+  <div class="row">
+    <div class="col s12 myagenda">
+      <!--agenda buttons-->
+      <% @agendas.each do |a| %>
+        <div class="agenda">
+          <a class="waves-effect waves-light btn modal-trigger" id="agenda1" href="#modal_agenda<%= a.id%>" style="height:40px; margin-left:<%= Random.rand(80) %>%; margin-top:<%= Random.rand(70) %>;">
+            <b><%= a.name %></b>
+          </a>
+        </div><br>
+      <% end %>
+    </div>
+  </div>
+</div>
+<!-- Modal Structure -->
+<% @agendas.each do |a| %>
+  <div id="modal_agenda<%= a.id %>" class="modal">
+    <div class="modal-content">
+      <h4 style="text-align:center;"><%= a.name %></h4><hr>
+      <h6><a href="<%= agenda_posts_path(a.id) %>"><b>들어가기</b></a></h6>
+    </div>
+  </div>
 <% end %>
 
-<!--following agenda-->
-<p><b>agenda current user is following</b></p>
 
+<!-- 모달 불러오는 jquery script -->
+<script>
+$(document).ready(function(){
+  // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+  $('.modal-trigger').leanModal();
+});
+</script>

@@ -1,0 +1,51 @@
+<!--posts curation-->
+
+<div class="card recommend grey lighten-5" style="padding:1em;">
+  <h5 style="text-align:center; margin-top:1em;"><b>당신을 위한<br>포스트 추천</b></h5><hr>
+  <% if @agenda.related_posts %>
+    <% @agenda.related_posts.each do |p| %>
+      <!--post#show로 가는 게 좋을까-->
+      <!--<a href="/agendas/<%#= p.agenda_id %>/posts/<%#= p.id %>">-->
+      <!--아니면 기사 url로 가는게 좋을까?-->
+      <a href="<%= p.url %>" target="_blank">
+        <img src="<%= p.pic %>" style="height:11em; width:12em; margin:auto;">
+      <!--<a href="<%#= p.url %>">-->
+      <!--  <img src="<%#= asset_path("#{p.pic}") %>" style="height:11em; width:12em; margin:auto;">-->
+        <p style="text-align:center;"><b><%= p.title %></b></p>
+      </a><hr>  
+    <% end %>
+  <% end %>
+  <a class="waves-effect waves-teal btn-flat modal-trigger" href="#newagenda"><b>새로운 어젠다 만들기</b></a>
+</div>
+
+
+<!-- Modal 창 -->
+  <!--신규어젠다를 만드는 모달창-->
+  <div id="newagenda" class="modal" style="width:40%;">
+      <div class="modal-content">
+          <h4 class="center-align">새로운 어젠다 만들기</h4>
+          <div class="center-align">
+              <div class="divider"></div><br>
+              <form class="col s12">
+                  <div class="row center-align">
+                      <div class="input-field col m10 offset-m1 blue-text">
+                          <i class="material-icons prefix">playlist_add</i>
+                          <input id="icon_prefix" type="text" class="validate">
+                          <label for="icon_prefix">어젠다 이름을 적어주세요!</label>
+                      </div>
+                      <div class="input-field col m10 offset-m1 blue-text ">
+                          <i class="material-icons prefix">invert_colors</i>
+                          <input id="icon_prefix" type="password" class="validate">
+                          <label for="icon_prefix">색깔을 선택해주세요!</label>
+                      </div>
+                  </div>
+              </form>
+              <div class="divider"></div>
+              <p>
+                  <a href="#" class="btn btn-flat modal-close">Cancel</a> &nbsp;
+                  <a href="#" class="waves-effect waves-blue btn btn-flat modal-action modal-close">등록하기</a>
+              </p>
+          </div>
+      </div>
+  </div>
+<!-- Modal 창 -->
